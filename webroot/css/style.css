@@ -1,0 +1,223 @@
+* { 
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height:100%;
+    width :100%;
+    overflow: hidden;
+}
+
+body, td, th, input, div, table, span, li{
+    font-size: 8.75pt;
+    font-family: arial,verdana,sans-serif;
+    color: #333;
+}
+.login_div {
+	border:1px solid #ccc;
+    height: 328px;
+    margin: -154px 0 0 -418px;
+    top: 50%;
+    width: 838px;
+    left: 50%;
+    position: absolute;
+    width: 838px;
+}
+.submit_input {
+    position: relative;
+    padding: 5px 10px;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 18px;
+    overflow: visible;
+	background:#019AD2 -moz-linear-gradient(#33BCEF, #019AD2) repeat-x scroll 0 0;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bcef',endColorstr='#019ad2',GradientType=0)
+    border-radius: 4px 4px 4px 4px;
+	border: 1px solid #057ED0;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.submit_input:hover {
+	background:#0271BF -moz-linear-gradient(#2DADDC, #0271BF) repeat-x scroll 0 0;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2DADDC',endColorstr='#0271BF',GradientType=0)
+}
+.text_input {
+	height:20px;
+    width: 210px;
+	border:1px solid #ccc;
+}
+.text_input:focus{
+	border:1px solid #56b4ef;
+	-webkit-box-shadow:inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+	-moz-box-shadow:inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+	box-shadow:inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+}
+
+input, textarea {
+    -moz-transition: background 0.2s linear 0s;
+}
+
+input, textarea, select {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    margin: 0;
+    outline: medium none;
+    padding: 4px;
+}
+
+label, input, textarea, select, button {
+    font: 13px/20px "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#window_layout {
+    float:left;
+    width:200%;
+    height:100%;
+    overflow:hidden;
+    left: 0px;
+    position: absolute;
+}
+
+#main_layout {
+    float:left;
+    width:50%;
+    height:100%;
+    overflow:hidden;
+}
+
+#app_layout  {
+    float:right;
+    width:50%;
+    height:100%;
+    overflow:hidden;
+    position: relative;
+}
+
+#left_layout {
+    float:left;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+#right_layout {
+    float:right;
+    width:0px;
+    height:100%;
+    background-color:#eee;
+    overflow:hidden;
+}
+
+#appicons_layout {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+#paging_layout {
+    margin:0 auto;
+    width:100%;
+    height:30px;
+    background-color:#eee;
+    overflow:hidden;
+}
+
+#gadget_layout {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+#ac-root {
+    width:0px;
+    height:0px;
+    display:none;
+}
+
+#appframe_layout {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:10;
+}
+
+#appctrl_layout {
+    position: absolute;
+    top:0px;
+	width:100%;
+	height:36px;
+	background:#ddd url(../image/globalheader.png) repeat-x scroll 0 0;
+	opacity:0.9;
+	-moz-opacity:0.9;
+	FILTER:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    z-index:900;
+}
+
+.back_button {
+    float:left;
+	cursor:pointer;
+    margin: 2px 6px;
+}
+
+.appicons_frame {
+	width:100%;
+	height:100%;
+}
+
+.appicons_frame ul {
+	list-style-type:none;
+	width:100%;
+	height:100%;
+}
+
+.appicons_frame ul li{
+	display:inline;
+	/* border:1px solid #ccc;*/
+	margin:12px 12px;
+	float:left;
+	width:80px;
+	height:80px;
+}
+
+.appicons_frame ul li div{
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	text-align:center;
+	cursor:pointer;
+}
+
+.appicons_frame ul li div img{
+	display:block;
+	width:80%;
+	height:80%;
+	margin:0 auto;
+	/* border:1px solid #ccc; */
+}
+
+.appicons_frame ul li div b{
+	display:block;
+	width:100%;
+	height:20%;
+	float:bottom;
+	overflow:hidden;
+	font-weight:normal;
+	text-shadow: 1px 1px #999;
+	/* border:1px solid #ccc; */
+}
+
+#gadget_layout div { 
+	width:100%;
+	overflow:hidden;
+}
+#gadget_layout iframe {
+	width:100%;
+	overflow:hidden;
+	border:0px;
+}

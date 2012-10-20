@@ -1,0 +1,2 @@
+<?php
+define("PHPVIEW_TEMPLATE_DIR", ROOT_DIR . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "php_template");
