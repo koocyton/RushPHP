@@ -1,5 +1,5 @@
 <?php
-namespace RaftPHP;
+namespace RushPHP;
 
 class Framework
 {

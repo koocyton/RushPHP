@@ -11,7 +11,7 @@ define("CONF_DIR", ROOT_DIR . DIRECTORY_SEPARATOR . "config");
 define("LIBS_DIR", ROOT_DIR . DIRECTORY_SEPARATOR . "libs");
 
 // 配置框架的目录
-define("CORE_DIR", LIBS_DIR . DIRECTORY_SEPARATOR . "RaftPHP");
+define("CORE_DIR", LIBS_DIR . DIRECTORY_SEPARATOR . "RashPHP");
 
 // 引入框架
 require(CORE_DIR . DIRECTORY_SEPARATOR . "bootstrap.php");

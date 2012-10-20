@@ -1,10 +1,10 @@
 <?php
-namespace RaftPHP\help;
+namespace RushPHP\help;
 
-use RaftPHP\Singleton;
+use RushPHP\Singleton;
 
 // 异常
-class DBHelperException()
+class DBHelperException
 {
 }
 

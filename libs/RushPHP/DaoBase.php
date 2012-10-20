@@ -1,5 +1,5 @@
 <?php
-namespace RaftPHP;
+namespace RushPHP;
 
 class DaoBase
 {
@@ -7,7 +7,7 @@ class DaoBase
 	{
 		$this->table_name = $table_name;
 
-		$this->dao_config  = $db_helper;
+		$this->dao_config  = $dao_config;
 	}
 
 	public function fetchOne($where, $field="*")

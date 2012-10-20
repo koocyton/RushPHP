@@ -1,8 +1,8 @@
 <?php
-namespace RaftPHP\help;
+namespace RushPHP\help;
 
-use RaftPHP\Singleton;
+use RushPHP\Singleton;
 
-class DBHelperManager.php
+class DBHelperManager
 {
 }
