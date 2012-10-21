@@ -1,27 +1,13 @@
 <?php
-use RaftPHP\dispatcher;
 
-// 配置 APP 的 ROOT 目录
-define("ROOT_DIR", dirname(dirname(__FILE__)));
+define( "DS", DIRECTORY_SEPARATOR );
 
-// 配置 APP 的配置文件存放目录
-define("CONF_DIR", ROOT_DIR . DIRECTORY_SEPARATOR . "config");
+define( "RUSH_SITE_DIR", dirname(dirname(__FILE__)) );
 
-// 配置框架的目录
-define("LIBS_DIR", ROOT_DIR . DIRECTORY_SEPARATOR . "libs");
+define( "RUSH_CORE_DIR", RUSH_SITE_DIR . DS . "libs" . DS . "RushPHP" );
 
-// 配置框架的目录
-define("CORE_DIR", LIBS_DIR . DIRECTORY_SEPARATOR . "RashPHP");
+require( RUSH_CORE_DIR . DS . "bootstrap.php" );
 
-// 引入框架
-require(CORE_DIR . DIRECTORY_SEPARATOR . "bootstrap.php");
+$dispatcher = new RushPHP\dispatcher\HTTPDispatcher();
 
-// 配置文件初始化
-RaftPHP\Configure::initialize();
-
-// 框架初始化
-RaftPHP\Framework::initialize();
-
-// dispatcher
-$dispatcher = new dispatcher\HTTPDispatcher();
 $dispatcher->dispatch();

@@ -5,23 +5,52 @@ class Configure
 {
 	public static function initialize()
 	{
+		self::setRuntimeDefine();
+
+		self::requireGlobalConfig();
+
+		self::requireWebSiteConfig();
+
 		self::setTimezone();
-		self::includeFile();
+	}
+	
+	public static function setRuntimeDefine()
+	{
+		$rush_runtime_domain = $_SERVER["domain"];
+		
+		if (!empty($_SERVER["argv"]))
+		{
+			$rush_runtime_domain = $_SERVER["args"][1];
+		}
+		
+		define( "RUSH_RUNTIME_DOMAIN", $rush_runtime_domain );
 	}
 
-	public static function includeFile()
+	private static function requireGlobalConfig()
 	{
-		$configFiles = glob(CONF_DIR.DIRECTORY_SEPARATOR.'*.php');
-	    foreach ($configFiles as $configFile) 
+		$global_config_files = glob( RUSH_SITE_DIR . DS . '*.php' );
+		
+	    foreach ( $global_config_files as $global_config_file ) 
 	    {
-            require_once $configFile;
+            require $global_config_file;
         }
+	}
+
+	private static function requireWebSiteConfig()
+	{
+		$website_config_files = glob( RUSH_SITE_DIR . DS . RUSH_RUNTIME_DOMAIN . DS . '*.php' );
+
+	    foreach ( $website_config_files as $website_config_file ) 
+	    {
+            require $website_config_file;
+        }
+		
 	}
 
 	private static function setTimezone()
 	{
 		if (!defined('TIME_ZONE')) define('TIME_ZONE', 'Asia/Shanghai');
-
+	
 		date_default_timezone_set(TIME_ZONE);
 	}
 }
