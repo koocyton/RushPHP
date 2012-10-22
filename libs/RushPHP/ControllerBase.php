@@ -1,7 +1,7 @@
 <?php
 namespace RushPHP;
 
-abstract class ControlBase
+abstract class ControllerBase
 {
 	/**
 	 * 获取控制器类名

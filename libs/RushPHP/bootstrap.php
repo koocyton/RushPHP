@@ -3,4 +3,8 @@
 // 配置类
 require RUSH_CORE_DIR . DS . 'Configure.php';
 
-require RUSH_CORE_DIR . DS . 'dispatcher' . DS . 'HTTPDispatcher.php';
+//
+require RUSH_CORE_DIR . DS . 'ControllerBase.php';
+
+//
+require RUSH_CORE_DIR . DS . 'Dispatcher.php';

@@ -1,5 +1,4 @@
 <?php
-
 namespace RushPHP;
 
 abstract class DispatcherBase
@@ -10,20 +9,19 @@ abstract class DispatcherBase
 
 	public function dispatch()
 	{
-		$control_class  = Framework::CTRL_NAMESPACE."\\".$this->class_name;
-        $control_method = $this->method_name; 
+		$controller_class  = "controller\\".$this->class_name;
+
+        $controller_method = $this->method_name; 
 
 		try
 		{
-			// ��ʼ��������
-			$control = new $control_class();     
+			$controller = new $controller_class();     
 
-			// ִ��ǰ�ù�����
 			$filter_view = false;
 
-			if ($control instanceof ControlBase)
+			if ($controller instanceof ControllerBase)
 			{
-				$filter_view = $control->beforeFilter();
+				$filter_view = $controller->beforeFilter();
 			}
 
 			if ($filter_view && $filter_view instanceof ViewBase)
@@ -57,7 +55,7 @@ abstract class DispatcherBase
 
 class HTTPDispatcher extends DispatcherBase
 {
-	protected $class_name  = "IndexControl";
+	protected $class_name  = "Index";
 
 	protected $method_name = "main";
 
@@ -65,7 +63,7 @@ class HTTPDispatcher extends DispatcherBase
 	{
 		if (!empty($_REQUEST['act']) && preg_match('/^([a-z_]+)\.([a-z_]+)$/i', $_REQUEST['act'], $matchs))
 		{
-			$this->class_name  = ucfirst($matchs[1])."Control";
+			$this->class_name  = ucfirst($matchs[1]);
 			$this->method_name = $matchs[2];
 		}
 		$_REQUEST['act'] = $this->class_name . '.' . $this->method_name;
