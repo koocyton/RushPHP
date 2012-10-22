@@ -1,7 +1,9 @@
 <?php
 namespace RushPHP;
 
-class DaoBase
+use RushPHP\helper\DBHelper;
+
+class DaoBase extends DBHelper
 {
 	public function __construct($table_name, $dao_config)
 	{

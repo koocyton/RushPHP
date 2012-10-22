@@ -64,3 +64,5 @@ class Configure
 		date_default_timezone_set(TIME_ZONE);
 	}
 }
+
+Configure::initialize();

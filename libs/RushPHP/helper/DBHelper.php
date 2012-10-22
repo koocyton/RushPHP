@@ -1,11 +1,14 @@
 <?php
-namespace RaftPHP\help;
+namespace RushPHP\helper;
 
-use RaftPHP\Singleton;
-
-class PDOHelper
+// 异常
+class DBHelperException
 {
-    private $pdo = null;
+}
+
+class DBHelper
+{
+	private $db_connects = array();
 
 	static public function getSingleton($unique_key)
 	{

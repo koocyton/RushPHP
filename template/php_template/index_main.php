@@ -7,7 +7,7 @@
 	<input class="text_input" type="text" name="" value="" />
 	<input class="text_input" type="text" name="" value="" />
 	<input type="submit" class="submit_input" value="提交" />
-	</div>
 	</form>
+	</div>
 	</body>
 </html>

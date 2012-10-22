@@ -1,49 +1,11 @@
 <?php
-namespace RushPHP\help;
+namespace RaftPHP\helper;
 
-use RushPHP\Singleton;
+use RaftPHP\Singleton;
 
-// 异常
-class DBHelperException
+class PDOHelper
 {
-}
-
-// 管理连接
-class DriveHelperManager
-{
-	$drive_helper = array();
-
-	public function __construct($db_config)
-	{
-		$this->setDbConnects($db_config);
-	}
-
-	public function setDbConnects($db_config)
-	{
-		foreach($db_config as $connect_code => $driver_config)
-		{
-			$Drive_helper = $connect_config['driver'] . "Helper";
-
-			$this->db_connects[$connect_code] = $drive_helper::getConnect($driver_config);
-		}
-	}
-}
-
-$user_model = model\UserModel::getSingleton();
-$user_model->getUserById();
-
-$user_model->fieldUserById();
-
-$user_model->fetchRow();
-$user_model->fetchOne();
-
-public function 
-
-DBHelper::getSingleton();
-
-class DBHelper
-{
-	$db_connects = array();
+    private $pdo = null;
 
 	static public function getSingleton($unique_key)
 	{
