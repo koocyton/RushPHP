@@ -1,7 +1,6 @@
 <?php
 namespace RushPHP\dispatcher;
 
-use RushPHP\Controller;
 use RushPHP\view\ViewBase;
 use RushPHP\ControllerBase;
 
