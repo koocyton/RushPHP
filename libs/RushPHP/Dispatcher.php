@@ -9,7 +9,7 @@ abstract class DispatcherBase
 
 	public function dispatch()
 	{
-		require ( RUSH_SITE_DIR . DS . 'controller' . DS . $this->class_name . '.php' );
+		require ( RUSH_SITE_DIR . DS . 'classes' . DS . 'controller' . DS . $this->class_name . '.php' );
 
 		$controller_class  = "controller\\".$this->class_name;
 
@@ -32,7 +32,7 @@ abstract class DispatcherBase
 			}
 			else
 			{
-				$action_view = $control->$control_method();
+				$action_view = $controller->$controller_method();
 
 				if ($action_view instanceof ViewBase)
 				{

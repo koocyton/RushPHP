@@ -1,8 +1,8 @@
 <?php
-
 namespace controller;
 
 use RushPHP\ControllerBase;
+use service;
 
 class Index extends ControllerBase
 {
