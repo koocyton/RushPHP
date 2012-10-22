@@ -10,9 +10,15 @@ use RushPHP\helper\DBHelper;
  *
  * $user = UserDao::getEntity();
  * 
- * $user->liuyi = 123;
- * $user->abc   = 4456;
- * $user->where = where 
+ * $user->id    = 123;
+ * $user->name  = liuyi;
+ * 
+ * $user->__where     = '_key=liuyi'
+ * 
+ * $user->__keyname   = "id";
+ * $user->__keyvalue  = "123";
+ * 
+ * $user->__dbconnect
  * 
  * $user->create();
  * $user->save();
