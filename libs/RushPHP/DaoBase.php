@@ -18,7 +18,7 @@ class DaoBase
 	{
 	}
 
-	public function fetchAll($ids)
+	public function fetchAll($where)
 	{
 	}
 
