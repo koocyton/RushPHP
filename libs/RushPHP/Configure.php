@@ -16,13 +16,23 @@ class Configure
 	
 	public static function setRuntimeDefine()
 	{
+		// 配置默认域
 		$rush_runtime_domain = $_SERVER["domain"];
-		
+
 		if (!empty($_SERVER["argv"]))
 		{
-			$rush_runtime_domain = $_SERVER["args"][1];
+			$rush_runtime_commond = join($_SERVER["argv"]);
+			
+			if (preg_match("/--domain=(.+?)/", $rush_runtime_commond, $matchs))
+			{
+				$rush_runtime_domain = $matchs[1];
+			}
+			else
+			{
+				$rush_runtime_commond = "default";
+			}
 		}
-		
+
 		define( "RUSH_RUNTIME_DOMAIN", $rush_runtime_domain );
 	}
 
