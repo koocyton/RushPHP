@@ -9,6 +9,8 @@ abstract class DispatcherBase
 
 	public function dispatch()
 	{
+		require ( RUSH_SITE_DIR . DS . 'controller' . DS . $this->class_name . '.php' );
+
 		$controller_class  = "controller\\".$this->class_name;
 
         $controller_method = $this->method_name; 
@@ -38,9 +40,9 @@ abstract class DispatcherBase
 				}
 			}
 		
-			if ($control instanceof ControlBase)
+			if ($controller instanceof ControllerBase)
 			{
-				$control->afterFilter();
+				$controller->afterFilter();
 			}
 		}
 		catch(\Exception $e)

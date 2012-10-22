@@ -1,20 +1,10 @@
 <?php
-/**
- * @file   IndexControl.php
- * @author koocyton <koocyton@gmail.com>
- *
- * @package       control
- * @subpackage    IndexControl
- */
 
-namespace control;
+namespace controller;
 
-use RaftPHP\ControlBase;
-use RaftPHP\view;
-use service;
+use RushPHP\ControllerBase;
 
-
-class IndexControl extends ControlBase
+class Index extends ControllerBase
 {
 	public function beforeFilter() {}
 
