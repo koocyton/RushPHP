@@ -42,12 +42,12 @@ class DaoBase extends DBHelper
 		$this->fetchRow();
 	}
 
-	public function fetchRow($where)
+	public function fetchEntity($where)
 	{
 		$this->fetchRows($where, 1, 1);
 	}
 
-	public function fetchRows($where)
+	public function fetchEntities($where)
 	{
 		// select * from table where 1 and $where limit 1, 1
 		// select * from table where 1 and $where limit 1
