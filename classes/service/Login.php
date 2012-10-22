@@ -4,7 +4,7 @@ namespace service;
 use RushPHP\Singleton;
 use dao;
 
-class LoginService
+class Login
 {
 	private $sign_key = "SW@Fs234l98#$#%RoGD";
 
