@@ -6,6 +6,9 @@ require RUSH_CORE_DIR . DS . 'Configure.php';
 // View
 require RUSH_CORE_DIR . DS . 'View.php';
 
+// Singleton
+require RUSH_CORE_DIR . DS . 'Singleton.php';
+
 // Dispather
 require RUSH_CORE_DIR . DS . 'Dispatcher.php';
 

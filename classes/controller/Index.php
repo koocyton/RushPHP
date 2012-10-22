@@ -2,6 +2,8 @@
 namespace controller;
 
 use RushPHP\ControllerBase;
+use RushPHP\view;
+
 use service;
 
 class Index extends ControllerBase

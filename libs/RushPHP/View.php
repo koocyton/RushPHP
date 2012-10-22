@@ -1,5 +1,5 @@
 <?php
-namespace RushPHP;
+namespace RushPHP\view;
 
 abstract class ViewBase
 {

@@ -1,5 +1,5 @@
 <?php
-namespace RushPHP;
+namespace RushPHP\dispatcher;
 
 abstract class DispatcherBase
 {

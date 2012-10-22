@@ -8,6 +8,6 @@ define( "RUSH_CORE_DIR", RUSH_SITE_DIR . DS . "libs" . DS . "RushPHP" );
 
 require( RUSH_CORE_DIR . DS . "bootstrap.php" );
 
-$dispatcher = new RushPHP\HTTPDispatcher();
+$dispatcher = new RushPHP\dispatcher\HTTPDispatcher();
 
 $dispatcher->dispatch();
