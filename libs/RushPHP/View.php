@@ -14,6 +14,10 @@ class PHPView extends ViewBase
 
 	public function __construct($template, $assign = null)
 	{
+		if (!defined("PHPVIEW_TEMPLATE_DIR"))
+		{
+			define("PHPVIEW_TEMPLATE_DIR", RUSH_SITE_DIR . DS . "template" . DS . "php_template");
+		}
 		$this->template = PHPVIEW_TEMPLATE_DIR . DS . $template;
 		$this->assign   = $assign;
 	}
