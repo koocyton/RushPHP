@@ -1,16 +1,20 @@
 <?php
 namespace service;
 
-use RaftPHP\Singleton;
+use RushPHP\Singleton;
 use dao;
 
 class LoginService
 {
 	private $sign_key = "SW@Fs234l98#$#%RoGD";
 
+	/**
+	 * 
+	 * @return service\LoginService
+	 */
 	static public function getSingleton()
 	{
-		return Singleton::get("service\LoginService");
+		return Singleton::get("service\\LoginService");
 	}
 
 	public function getLoginUserId()

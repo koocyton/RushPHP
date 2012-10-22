@@ -1,6 +1,8 @@
 <?php
 namespace RushPHP\dispatcher;
 
+use RushPHP\Controller;
+
 abstract class DispatcherBase
 {
 	protected $class_name;
