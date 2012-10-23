@@ -1,14 +1,17 @@
 <?php
-class EntityBase
+
+/*
+ * 
+ * select : new Model\User()
+ *          User->setWhere(array(user_name=>123))
+ *          where abc in  
+ *
+ */
+class ModelBase
 {
 	private $index_key = "";
 
 	private $index_value = "";
-
-	public function create()
-	{
-
-	}
 
 	public function remove()
 	{

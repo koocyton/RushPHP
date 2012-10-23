@@ -17,9 +17,9 @@ class Configure
 	public static function setRuntimeDefine()
 	{
 		// 配置默认域
-		$rush_runtime_domain = $_SERVER["domain"];
+		$rush_runtime_domain = $_SERVER["SERVER_NAME"];
 
-		if (!empty($_SERVER["argv"]))
+		if ( !empty($_SERVER["argv"]) )
 		{
 			$rush_runtime_commond = join($_SERVER["argv"]);
 			
