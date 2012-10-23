@@ -1,11 +1,6 @@
 <?php
 namespace RushPHP;
 
-/*
- * 界面上，登陆和注册位置 ，显示用户名的地方，都用繁体的邮箱
- * 登陸 ： 郵箱   密碼
- * 註冊 ： 請輸入郵箱   輸入密碼    確認密碼
- */
 class Configure
 {
 	public static function initialize()
