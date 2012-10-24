@@ -7,7 +7,6 @@ use dao;
 
 class Login
 {
-	// Default sign_key : Sw@Fs234l98#$#%RoGD
 	private $sign_key = "Sw@Fs234l98#$#%RoGD";
 
 	/**
@@ -37,7 +36,6 @@ class Login
 		return false;
 	}
 
-
 	private function createLoginSign($user_id, $login_expire)
 	{
 		return Utils::sha256($user_id . $login_expire, $this->sign_key);
@@ -45,8 +43,9 @@ class Login
 
 	public function userLogin($login_name, $login_pass)
 	{
-        $user_dao = dao\User();
-		$login_user = $user_dao->fetchRow(array("login_name"=>$login_name));
+        $user_model = new model\User();
+
+		$login_user = $user_model->save();
 
 		$configDao = dao\DataTableDao::getTableSingleton("user_info");
 	}
