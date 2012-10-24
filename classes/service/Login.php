@@ -7,7 +7,8 @@ use dao;
 
 class Login
 {
-	private $sign_key = "SW@Fs234l98#$#%RoGD";
+	// Default sign_key : Sw@Fs234l98#$#%RoGD
+	private $sign_key = "Sw@Fs234l98#$#%RoGD";
 
 	/**
 	 * 
@@ -44,8 +45,8 @@ class Login
 
 	public function userLogin($login_name, $login_pass)
 	{
-        $userDao = dao\DataTableDao::getTableSingleton("user");
-		$loginUser = $userDao->fetchRow(array("login_name"=>$login_name));
+        $user_dao = dao\User();
+		$login_user = $user_dao->fetchRow(array("login_name"=>$login_name));
 
 		$configDao = dao\DataTableDao::getTableSingleton("user_info");
 	}
