@@ -5,7 +5,7 @@ class Utils
 {
     public static function getClientIP()
     {
-        if (isset($_SERVER))
+        if (isset($_SERVER["REMOTE_ADDR"]))
         {
         	$realip = $_SERVER["REMOTE_ADDR"];
         }
@@ -15,4 +15,9 @@ class Utils
         }
         return addslashes($realip);
     }
+
+	public static function sha256($string, $key="")
+	{
+		return hash("sha256", $string . $key);
+	}
 }

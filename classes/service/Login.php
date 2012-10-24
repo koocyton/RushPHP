@@ -2,6 +2,7 @@
 namespace service;
 
 use RushPHP\Singleton;
+use common\Utils;
 use dao;
 
 class Login
@@ -35,9 +36,10 @@ class Login
 		return false;
 	}
 
+
 	private function createLoginSign($user_id, $login_expire)
 	{
-		return common\Utils::sha256($user_id . $login_expire, $this->sign_key);
+		return Utils::sha256($user_id . $login_expire, $this->sign_key);
 	}
 
 	public function userLogin($login_name, $login_pass)

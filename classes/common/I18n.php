@@ -1,8 +1,6 @@
 <?php
 namespace common;
 
-use framework\core\Context;
-
 class I18n
 {
 	/**
@@ -11,12 +9,13 @@ class I18n
 	 * @var string
 	 */
 	const LOCALE_DIR = 'locale';
+
 	/**
 	 * 默认域
 	 * 
 	 * @var string
 	 */
-	const DEFAULT_DOMAIN = 'game';	
+	const DEFAULT_DOMAIN = 'default';	
 	
     /**
      * 单实例对象序列
@@ -58,7 +57,7 @@ class I18n
     	$this->domain = $domain;  
     	 
     	bind_textdomain_codeset($this->domain, DEFAULT_CHARSET);
-    	bindtextdomain($this->domain, Utils::mergePath(Context::getRootPath(), self::LOCALE_DIR));
+    	bindtextdomain($this->domain, RUSH_RUNTIME_DOMAIN . DS . self::LOCALE_DIR);
     }
 
     /**
@@ -130,4 +129,3 @@ class I18n
     	return self::__(self::DEFAULT_DOMAIN, $key, $params);
     }
 }
-?>

@@ -14,7 +14,7 @@ class Index extends ControllerBase
 
 	public function main()
 	{
-        $login_service = service\LoginService::getSingleton();
+        $login_service = service\Login::getSingleton();
 
 		if ($login_service->getLoginUserId())
 		{
@@ -29,7 +29,7 @@ class Index extends ControllerBase
 		$login_name = $_POST["login_name"];
 		$login_pass = $_POST['login_pass'];
 
-        $login_service = service\LoginService::getSingleton();
+        $login_service = service\Login::getSingleton();
 		$login_user_id = $login_service->userLogin($login_name, $login_pass);
 
 		if (empty($login_user_id))
@@ -42,7 +42,7 @@ class Index extends ControllerBase
 
 	public function logout()
 	{
-        $login_service = service\LoginService::getSingleton();
+        $login_service = service\Login::getSingleton();
 		$login_service->logout();
 		return new view\PHPView("index_main.php");
 	}
