@@ -5,7 +5,7 @@ class ModelPond
 {
 	public static $models = array();
 	
-	public static $index  = array();
+	public static $save_index  = array();
 }
 
 class ModelBase
@@ -30,11 +30,13 @@ class ModelBase
 
 		unset(ModelPond::$models[$this->uuid]);
 
+		unset(ModelPond::$save_index[$this->uuid]);
+
 		return true;
 	}
 
 	public function save()
 	{
-		
+		ModelPond::$save_index[$this->uuid] = array($this->uuid, $this->connect);
 	}
 }
