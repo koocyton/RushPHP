@@ -17,7 +17,7 @@ require RUSH_CORE_DIR . DS . 'Dispatcher.php';
 require RUSH_CORE_DIR . DS . 'ControllerBase.php';
 
 // DaoBase
-require RUSH_CORE_DIR . DS . 'DaoBase.php';
+require RUSH_CORE_DIR . DS . 'ModelBase.php';
 
 // View
 require RUSH_CORE_DIR . DS . 'View.php';

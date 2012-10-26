@@ -1,6 +1,9 @@
 <?php
+namespace model;
 
-class info_user
+use RushPHP\ModelBase;
+
+class info_user extends ModelBase
 {
 	public $id = "";
 
@@ -9,9 +12,9 @@ class info_user
 	public $login_pass = "";
 
 	public $user_nick  = "";
-
+	
 	public function __construct()
 	{
-		
+		$this->set_connect = array("liuyi");
 	}
 }

@@ -1,28 +1,38 @@
 <?php
+namespace RushPHP;
 
-/*
- * 
- * select : new Model\User()
- *          User->setWhere(array(user_name=>123))
- *          where abc in  
- *
- */
+class ModelPond
+{
+	public static $models = array();
+	
+	public static $index  = array();
+}
+
 class ModelBase
 {
-	private $index_key = "";
+	public $name = "";
+	
+	public $uuid = "";
 
-	private $index_value = "";
-
-	public function remove()
+	public function find($id)
 	{
-		
+		$this->uuid = $this->name . "_" . $id;
+
+		if (empty(ModelPond::$models[$this->uuid]))
+		{
+			ModelPond::$models[$this->uuid] = "";
+		}
 	}
 
-	public function update()
+	public function delete()
 	{
-		
+		if ($this->uuid=="") return false;
+
+		unset(ModelPond::$models[$this->uuid]);
+
+		return true;
 	}
- 
+
 	public function save()
 	{
 		

@@ -7,9 +7,9 @@ use dao;
 
 class Login
 {
-	private $sign_key = "Sw@Fs234l98#$#%RoGD";
+	private $sign_key   = "Sw@Fs234l98#$#%RoGD";
 	
-	private $import_models = array("user_info");
+	private $use_models = array("info_user");
 
 	/**
 	 * 
@@ -45,6 +45,14 @@ class Login
 
 	public function userLogin($login_name, $login_pass)
 	{
-        $this->user_info->select();
+        $this->info_user = $this->info_user->find('all',
+			array('conditions'=> array("login_name"=>$login_name), 
+			      'limit' => $cleft->limit,
+			      'page'  => $cleft->page,
+			      'order' => 'id DESC'));
+
+        $this->info_user->delete();
+        
+        $this->info_user->save();
 	}
 }
