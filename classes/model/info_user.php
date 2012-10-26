@@ -1,6 +1,6 @@
 <?php
 
-class UserEntity
+class info_user
 {
 	public $id = "";
 
@@ -9,4 +9,9 @@ class UserEntity
 	public $login_pass = "";
 
 	public $user_nick  = "";
+
+	public function __construct()
+	{
+		
+	}
 }

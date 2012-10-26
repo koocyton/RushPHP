@@ -8,6 +8,8 @@ use dao;
 class Login
 {
 	private $sign_key = "Sw@Fs234l98#$#%RoGD";
+	
+	private $import_models = array("user_info");
 
 	/**
 	 * 
@@ -43,10 +45,6 @@ class Login
 
 	public function userLogin($login_name, $login_pass)
 	{
-        $user_model = new model\User();
-
-		$login_user = $user_model->save();
-
-		$configDao = dao\DataTableDao::getTableSingleton("user_info");
+        $this->user_info->select();
 	}
 }
