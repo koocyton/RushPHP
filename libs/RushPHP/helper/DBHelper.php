@@ -25,10 +25,13 @@ class DBConnectManager
 
 class DBHelper
 {
+	private $connect = null;
+
 	static public function getSingleton($config_name)
 	{
 		$db_helper = Singleton::get("RushPHP\\helper\\DBHelper");
-		$db_helper->setConnect = DBConnectManager::getConnect(DBHelperConfig::$config_name);
+		$db_helper->setConnect = DBConnectManager::getConnect($config_name, DBHelperConfig::$config_name);
+		return $db_helper;
 	}
 
     public function __construct()
