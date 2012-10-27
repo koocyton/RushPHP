@@ -10,7 +10,7 @@ class ModelPond
 
 class ModelBase
 {
-	public $name = "";
+	public $model_name = "";
 	
 	public $uuid = "";
 
