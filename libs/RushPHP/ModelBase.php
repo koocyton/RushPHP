@@ -5,7 +5,6 @@ use RushPHP\helper\DBHelper;
 
 class ModelBase
 {
-	
 	public $model_name = "";
 
 	public $config_name = "default";
