@@ -1,42 +1,29 @@
 <?php
 namespace RushPHP;
 
-class ModelPond
-{
-	public static $models = array();
-	
-	public static $save_index  = array();
-}
+use RushPHP\helper\DBHelper;
 
 class ModelBase
 {
 	public $model_name = "";
-	
-	public $uuid = "";
 
-	public function find($id)
+	public $config_name = "default";
+
+	public function find($condition)
 	{
-		$this->uuid = $this->name . "_" . $id;
-
-		if (empty(ModelPond::$models[$this->uuid]))
-		{
-			ModelPond::$models[$this->uuid] = "";
-		}
+		$db_help = DBHelper::getSingleton( $this->config_name );
+		return $db_help->find($condition);
 	}
 
-	public function delete()
+	public function delete($ids)
 	{
-		if ($this->uuid=="") return false;
-
-		unset(ModelPond::$models[$this->uuid]);
-
-		unset(ModelPond::$save_index[$this->uuid]);
-
-		return true;
+		$db_help = DBHelper::getSingleton( $this->config_name );
+		return $db_help->delete($ids);
 	}
 
-	public function save()
+	public function save($data)
 	{
-		ModelPond::$save_index[$this->uuid] = array($this->uuid, $this->connect);
+		$db_help = DBHelper::getSingleton( $this->config_name );
+		return $db_help->save($data);
 	}
 }
