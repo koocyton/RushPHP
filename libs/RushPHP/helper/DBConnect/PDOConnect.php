@@ -1,7 +1,7 @@
 <?php
-namespace RaftPHP\helper;
+namespace RushPHP\helper\DBConnect;
 
-use RaftPHP\Singleton;
+use RushPHP\Singleton;
 
 class PDOHelper
 {
