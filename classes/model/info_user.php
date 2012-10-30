@@ -12,7 +12,7 @@ class info_user extends ModelBase
 	public $login_pass = "";
 
 	public $user_nick  = "";
-	
+
 	public function __construct()
 	{
 		$this->set_connect = array("liuyi");
