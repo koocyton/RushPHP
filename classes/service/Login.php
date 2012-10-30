@@ -12,12 +12,13 @@ class Login
 	private $use_models = array("info_user");
 
 	/**
+	 * 返回 service\Login
 	 * 
-	 * @return service\LoginService
+	 * @return service\Login
 	 */
 	static public function getSingleton()
 	{
-		return Singleton::get("service\\LoginService");
+		return Singleton::get("service\\Login");
 	}
 
 	public function getLoginUserId()
