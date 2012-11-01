@@ -4,6 +4,7 @@ function __autoload($class_name)
 	require_once( RUSH_SITE_DIR . DS . classes . DS . str_replace("\\", DS, $class_name) . '.php' );
 }
 
+
 // Configure
 require RUSH_CORE_DIR . DS . 'Configure.php';
 
