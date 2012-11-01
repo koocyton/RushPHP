@@ -20,7 +20,7 @@ class PDOController
 	public function setConnect($con_info)
 	{
 		$this->pdo = new \PDO(
-				$con_info['scheme'].':host='.$con_info['host'].';port='.$con_info['port'].';dbname='.$con_info['dbname'], $con_info['username'], $con_info['password'],
+				$con_info['scheme'].':host='.$con_info['host'].';port='.$con_info['port'].';dbname='.$con_info['database'], $con_info['login'], $con_info['password'],
 				array(
 						\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES '".$con_info['charset']."';",
 						\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION

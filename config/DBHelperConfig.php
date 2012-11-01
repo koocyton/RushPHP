@@ -2,11 +2,13 @@
 class DBHelperConfigure
 {
 	public static $default = array(
-		'driver'   => 'MySQL',
+		'connect'  => 'PDO',
+		'scheme'   => 'mysql',
 		'host'     => 'localhost',
 		'login'    => 'user',
 		'password' => 'password',
 		'database' => 'mytest',
+		'charset'  => 'UTF8',
 		'prefix'   => '',
 	);
 }
