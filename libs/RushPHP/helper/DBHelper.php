@@ -43,8 +43,8 @@ class DBHelper
 		$this->pdo = new \PDO(
 			$dsn_info['scheme'].':host='.$dsn_info['host'].';port='.$dsn_info['port'].';dbname='.$dsn_info['dbname'], $dsn_info['username'], $dsn_info['password'], 
 			array(
-				PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES '".$dsn_info['charset']."';",
-				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+				\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES '".$dsn_info['charset']."';",
+				\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
 			)
 		);
 	}

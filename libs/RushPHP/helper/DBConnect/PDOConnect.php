@@ -3,8 +3,9 @@ namespace RushPHP\helper\DBConnect;
 
 use RushPHP\Singleton;
 
-class PDOHelper
+class PDOController
 {
+
     private $pdo = null;
 
 	static public function getSingleton($unique_key)
@@ -16,14 +17,14 @@ class PDOHelper
 	{
 	}
 
-    public static function setPdo($dsn_info)
-    {
+	public function setConnect($con_info)
+	{
 		$this->pdo = new \PDO(
-			$dsn_info['scheme'].':host='.$dsn_info['host'].';port='.$dsn_info['port'].';dbname='.$dsn_info['dbname'], $dsn_info['username'], $dsn_info['password'], 
-			array(
-				PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES '".$dsn_info['charset']."';",
-				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-			)
+				$con_info['scheme'].':host='.$con_info['host'].';port='.$con_info['port'].';dbname='.$con_info['dbname'], $con_info['username'], $con_info['password'],
+				array(
+						\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES '".$con_info['charset']."';",
+						\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
+				)
 		);
 	}
 

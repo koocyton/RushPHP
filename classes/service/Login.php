@@ -46,6 +46,8 @@ class Login
 
 	public function userLogin($login_name, $login_pass)
 	{
+		$dbc->delete("abcd\\def", "name", "abc", "1");
+
         $this->info_user = $this->info_user->find('all',
 			array('conditions'=> array("login_name"=>$login_name), 
 			      'limit' => $cleft->limit,
