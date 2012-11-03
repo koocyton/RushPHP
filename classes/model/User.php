@@ -3,11 +3,11 @@ namespace model;
 
 use RushPHP\ModelBase;
 
-class info_user extends ModelBase
+class User extends ModelBase
 {
 	public $id = "";
 
-	public $login_name = "";
+	public $account = "";
 
 	public $login_pass = "";
 

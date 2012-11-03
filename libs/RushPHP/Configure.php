@@ -60,6 +60,8 @@ class Configure
 	private static function setTimezone()
 	{
 		if (!defined('TIME_ZONE')) define('TIME_ZONE', 'Asia/Shanghai');
+
+		if (!defined('NOW_TIME'))  define('NOW_TIME', time());
 	
 		date_default_timezone_set(TIME_ZONE);
 	}

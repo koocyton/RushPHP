@@ -7,8 +7,6 @@ use dao;
 
 class Login
 {
-	private $sign_key   = "Sw@Fs234l98#$#%RoGD";
-	
 	private $use_models = array("info_user");
 
 	/**
@@ -21,7 +19,7 @@ class Login
 		return Singleton::get("service\\Login");
 	}
 
-	public function getLoginUserId()
+	public function checkSession()
 	{
 		if (!empty($_COOKIE['wess']) && preg_match("^/(.+)_(.+)_(.+)/$", $_COOKIE['wess'], $matchs))
 		{
@@ -41,21 +39,30 @@ class Login
 
 	private function createLoginSign($user_id, $login_expire)
 	{
-		return Utils::sha256($user_id . $login_expire, $this->sign_key);
+		return Utils::sha256($user_id . $login_expire, "Sw@Fs234l98#$#%RoGD");
+	}
+	
+	public function logout()
+	{
+		$_COOKIE['wess'] = "";
+		setcookie("wess", null);
 	}
 
-	public function userLogin($login_name, $login_pass)
+	public function login($account, $password)
 	{
-		$dbc->delete("abcd\\def", "name", "abc", "1");
+        $user_info = $this->User->fetchRow("account", $account);
 
-        $this->info_user = $this->info_user->find('all',
-			array('conditions'=> array("login_name"=>$login_name), 
-			      'limit' => $cleft->limit,
-			      'page'  => $cleft->page,
-			      'order' => 'id DESC'));
+		if (empty($user_info))
+		{
+			return 1;
+		}
+		else if ( $user_info["password"] != md5($password . "_#\$W%z9H") )
+		{
+			return 2;
+		}
+		$_COOKIE['wess'] = $user_info["id"] . "_" . NOW_TIME . "_" . $this->createLoginSign($user_info["id"], NOW_TIME);
+		setcookie("wess", $_COOKIE['wess']);
 
-        $this->info_user->delete();
-        
-        $this->info_user->save();
+		return 0;
 	}
 }
