@@ -8,6 +8,11 @@ class ModelBase
 	public $model_name = "";
 
 	public $config_name = "default";
+	
+	public function __construct($model_name)
+	{
+		$this->model_name = $model_name;
+	}
 
 	public function fetchRow($condition)
 	{

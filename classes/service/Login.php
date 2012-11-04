@@ -2,12 +2,13 @@
 namespace service;
 
 use RushPHP\Singleton;
+use RushPHP\ServiceBase;
 use common\Utils;
 use dao;
 
-class Login
+class Login extends ServiceBase
 {
-	private $use = array("User");
+	public $use = array("User");
 
 	/**
 	 * 返回 service\Login
@@ -40,6 +41,18 @@ class Login
 	private function createLoginSign($user_id, $login_expire)
 	{
 		return Utils::sha256($user_id . $login_expire, "Sw@Fs234l98#$#%RoGD");
+	}
+	
+	public function regist($account, $password, $re_password, $account_info)
+	{
+		$md5_password = md5($password . "_#\$W%z9H");
+		
+		$this->User->create(array(
+				"account"  => $account,
+				"password" => $md5_password,
+				"nick"     => $account_info["nick"],
+				"email"    => $account_info["email"],
+		));
 	}
 	
 	public function logout()

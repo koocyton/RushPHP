@@ -1,6 +1,8 @@
 <?php
 namespace RushPHP;
 
+use model;
+
 class ServiceBase
 {
 	public $use = array();
@@ -9,7 +11,16 @@ class ServiceBase
 	{
 		foreach($this->use as $model_name)
 		{
-			$this->$model_name = new ModelBase();
+			$model_class = "model\\" . $model_name;
+
+			if (class_exists($model_class))
+			{
+				$this->$model_name = new $model_class();
+			}
+			else
+			{
+				$this->$model_name = new ModelBase($model_name);
+			}
 		}
 	}
 }
