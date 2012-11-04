@@ -48,50 +48,12 @@ class PDOConnect
 		return $result;
 	}
 
-	/** 
-	 * 读取某个字段
-	 * 
-	 * @param table_name	表名
-	 * @param where			需要操作的数据表
-	 * @param field			需要查询的字段
-	 * @param order			排序/排重
-	 * 
-	 * @return string
-	 */
-	public function fetchOne($table_name, $where="1", $fields="*", $order=null)
+	public function fetchRow($table_name, $condition="1")
 	{
-		$result = $this->fetchRow($table_name, $where, $fields, $order);
-		return empty($result) ? "" : current($result);
-	}
-
-	/** 
-	 * 读取一行记录
-	 * 
-	 * @param table_name	表名
-	 * @param where			需要操作的数据表
-	 * @param field			需要查询的字段
-	 * @param order			排序/排重
-	 * @param limit			限制查询结果的条目数量
-	 * 
-	 * @return array 一维数组
-	 */
-	public function fetchRow($table_name, $where="1", $fields="*", $order=null)
-	{
-		$result = $this->fetchAll($table_name, $where, $fields, $order, "1");
+		$result = $this->fetchAll($table_name, $condition, "*", null, "1");
 		return empty($result) ? array() : current($result);
 	}
 
-	/** 
-	 * 读取多行行记录
-	 * 
-	 * @param table_name	表名
-	 * @param where			需要操作的数据表
-	 * @param field			需要查询的字段
-	 * @param order			排序/排重
-	 * @param limit			限制查询结果的条目数量
-	 * 
-	 * @return array 二维数组
-	 */
 	public function fetchAll($table_name, $where="1", $fields="*", $order=null, $limit=null)
 	{
 		if (is_array($where))
@@ -105,41 +67,6 @@ class PDOConnect
 
 		$query = empty($limit) ? $query : $query . " LIMIT "    . $limit;
 
-		return $this->executeQuery($query);
-	}
-
-	public function insert($table_name, $array)
-	{
-		// 获得字段
-		$fields = "`" . implode("`,`", array_keys($insert_array[0])) . "`";
-		
-		// 获得插入值
-		$values = "";
-		foreach($data as $key=>$val)
-		{
-			if ($values!="") $values .=",";
-			// 获得值
-			$values .= "('" . implode("','", array_map('addslashes', $val)) . "')";
-		}
-
-		// 插入到数据表
-        $query = "INSERT INTO " . $table . " (" . $fields . ") VALUES " . $values;
-
-		return $this->executeQuery($query);
-	}
-
-	public function multiInsert()
-	{
-		return $this->executeQuery($query);
-	}
-
-	public function update()
-	{
-		return $this->executeQuery($query);
-	}
-
-	public function delete()
-	{
 		return $this->executeQuery($query);
 	}
 }

@@ -18,30 +18,30 @@ class ModelBase
 	public function fetchRow($condition)
 	{
 		$db_help = DBHelper::getSingleton($this->config);
-		return $db_help->fetchRow($condition);
+		return $db_help->fetchRow($this->table, $condition);
 	}
 
 	public function fetchAll($condition, $start, $length, $order, $group)
 	{
 		$db_help = DBHelper::getSingleton($this->config);
-		return $db_help->fetchAll($condition, $start, $length, $order, $group);
+		return $db_help->fetchAll($this->table, $condition, $start, $length, $order, $group);
 	}
 
 	public function delete($condition)
 	{
 		$db_help = DBHelper::getSingleton( $this->config_name );
-		return $db_help->delete($condition);
+		return $db_help->delete($this->table, $condition);
 	}
 
 	public function create($data)
 	{
 		$db_help = DBHelper::getSingleton( $this->config_name );
-		return $db_help->create($data);
+		return $db_help->create($this->table, $data);
 	}
 
 	public function update($data)
 	{
 		$db_help = DBHelper::getSingleton( $this->config_name );
-		return $db_help->update($data);
+		return $db_help->update($this->table, $data);
 	}
 }
