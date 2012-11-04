@@ -7,8 +7,9 @@ class PDOConnect
 {
     private $pdo = null;
 
-    public function __construct()
+    public function __construct($conn_info)
 	{
+		$this->setConnecter($conn_info);
 	}
 
 	public function setConnecter($conn_info)
