@@ -38,7 +38,7 @@ class Configure
 
 	private static function requireGlobalConfig()
 	{
-		$global_config_files = glob( RUSH_SITE_DIR . DS . '*.php' );
+		$global_config_files = glob( RUSH_SITE_DIR . DS . config . DS . '*.php' );
 		
 	    foreach ( $global_config_files as $global_config_file ) 
 	    {
@@ -48,7 +48,7 @@ class Configure
 
 	private static function requireWebSiteConfig()
 	{
-		$website_config_files = glob( RUSH_SITE_DIR . DS . RUSH_RUNTIME_DOMAIN . DS . '*.php' );
+		$website_config_files = glob( RUSH_SITE_DIR . DS . config . DS . RUSH_RUNTIME_DOMAIN . DS . '*.php' );
 
 	    foreach ( $website_config_files as $website_config_file ) 
 	    {
