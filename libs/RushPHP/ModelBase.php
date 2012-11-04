@@ -5,19 +5,19 @@ use RushPHP\helper\DBHelper;
 
 class ModelBase
 {
-	public $dbtable_name = "";
+	public $table  = "";
 
-	public $dbhelper_config = "";
+	public $config = "";
 	
-	public function __construct($model_name, $dbhelper_config="default")
+	public function __construct($table="", $config="")
 	{
-		$this->model_name      = $model_name;
-		$this->dbhelper_config = $dbhelper_config;
+		$this->table  = empty($table)  ? $this->table  : $table;
+		$this->config = empty($config) ? $this->config : $config;
 	}
 
 	public function fetchRow($condition)
 	{
-		$db_help = DBHelper::getSingleton( $this->config_name );
+		$db_help = DBHelper::getSingleton($this->config);
 		return $db_help->find($condition);
 	}
 
