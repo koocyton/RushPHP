@@ -1,7 +1,11 @@
 <?php
 namespace model;
 
-class User
+use RushPHP\ModelBase;
+
+class User extends ModelBase
 {
-	public static $dbconfig = "";
+	public static $dbhelper_config = "default";
+
+	public static $db_table        = "info_user";
 }

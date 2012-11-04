@@ -5,13 +5,14 @@ use RushPHP\helper\DBHelper;
 
 class ModelBase
 {
-	public $model_name = "";
+	public $dbtable_name = "";
 
-	public $config_name = "default";
+	public $dbhelper_config = "";
 	
-	public function __construct($model_name)
+	public function __construct($model_name, $dbhelper_config="default")
 	{
-		$this->model_name = $model_name;
+		$this->model_name      = $model_name;
+		$this->dbhelper_config = $dbhelper_config;
 	}
 
 	public function fetchRow($condition)
@@ -28,12 +29,18 @@ class ModelBase
 	public function delete($condition)
 	{
 		$db_help = DBHelper::getSingleton( $this->config_name );
-		return $db_help->delete($ids);
+		return $db_help->delete($condition);
 	}
 
-	public function save($data)
+	public function create($data)
 	{
 		$db_help = DBHelper::getSingleton( $this->config_name );
-		return $db_help->save($data);
+		return $db_help->create($data);
+	}
+
+	public function update($data)
+	{
+		$db_help = DBHelper::getSingleton( $this->config_name );
+		return $db_help->update($data);
 	}
 }
