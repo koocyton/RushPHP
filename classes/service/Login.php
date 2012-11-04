@@ -7,7 +7,7 @@ use dao;
 
 class Login
 {
-	private $use_models = array("info_user");
+	private $use = array("User");
 
 	/**
 	 * 返回 service\Login

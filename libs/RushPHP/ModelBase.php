@@ -9,13 +9,18 @@ class ModelBase
 
 	public $config_name = "default";
 
-	public function find($condition)
+	public function fetchRow($condition)
 	{
 		$db_help = DBHelper::getSingleton( $this->config_name );
 		return $db_help->find($condition);
 	}
 
-	public function delete($ids)
+	public function fetchAll($condition, $start, $length, $order, $group)
+	{
+		
+	}
+
+	public function delete($condition)
 	{
 		$db_help = DBHelper::getSingleton( $this->config_name );
 		return $db_help->delete($ids);
