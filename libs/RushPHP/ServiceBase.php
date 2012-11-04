@@ -19,7 +19,7 @@ class ServiceBase
 			}
 			else
 			{
-				$this->$model_name = new ModelBase($model_name);
+				$this->$model_name = new ModelBase($model_name, "default");
 			}
 		}
 	}

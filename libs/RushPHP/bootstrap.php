@@ -5,9 +5,8 @@ function __autoload($class_name)
 
 	if (!class_exists($class_name))
 	{
-		echo $class_name."\n<br />";
-		echo dirname(RUSH_CORE_DIR) . DS . str_replace("\\", DS, $class_name) . '.php'."\n<br />";
-		@include ( dirname(RUSH_CORE_DIR) . DS . str_replace("\\", DS, $class_name) . '.php' );
+		// echo RUSH_LIBS_DIR . DS . str_replace("\\", DS, $class_name) . '.php'."\n<br />";
+		@include ( RUSH_LIBS_DIR . DS . str_replace("\\", DS, $class_name) . '.php' );
 	}
 }
 

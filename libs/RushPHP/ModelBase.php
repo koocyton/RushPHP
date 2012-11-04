@@ -18,12 +18,13 @@ class ModelBase
 	public function fetchRow($condition)
 	{
 		$db_help = DBHelper::getSingleton($this->config);
-		return $db_help->find($condition);
+		return $db_help->fetchRow($condition);
 	}
 
 	public function fetchAll($condition, $start, $length, $order, $group)
 	{
-		
+		$db_help = DBHelper::getSingleton($this->config);
+		return $db_help->fetchAll($condition, $start, $length, $order, $group);
 	}
 
 	public function delete($condition)

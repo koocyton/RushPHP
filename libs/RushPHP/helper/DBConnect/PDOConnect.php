@@ -3,7 +3,7 @@ namespace RushPHP\helper\DBConnect;
 
 use RushPHP\Singleton;
 
-class PDOController
+class PDOConnect
 {
     private $pdo = null;
 
