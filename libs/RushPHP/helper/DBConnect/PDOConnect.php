@@ -7,17 +7,12 @@ class PDOConnect
 {
     private $pdo = null;
 
-    public function __construct($conn_info)
-	{
-		$this->setConnecter($conn_info);
-	}
-
-	public function setConnecter($conn_info)
+    public function __construct($config)
 	{
 		$this->pdo = new \PDO(
-				$conn_info['scheme'].':host='.$conn_info['host'].';port='.$conn_info['port'].';dbname='.$conn_info['database'], $conn_info['login'], $conn_info['password'],
+				$config['scheme'].':host='.$config['host'].';port='.$config['port'].';dbname='.$config['database'], $config['login'], $config['password'],
 				array(
-						\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES '".$conn_info['charset']."';",
+						\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES '".$config['charset']."';",
 						\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
 				)
 		);
@@ -51,6 +46,15 @@ class PDOConnect
 
 	public function fetchRow($table_name, $condition="1")
 	{
+		if (is_array($condition))
+		{
+			$_condition = "1";
+			foreach($condition as $field=>$value)
+			{
+				$_condition .= " AND `" . $field . "`='" . $value ."'";
+			}
+			$condition = $_condition;
+		}
 		$result = $this->fetchAll($table_name, $condition, "*", null, "1");
 		return empty($result) ? array() : current($result);
 	}
