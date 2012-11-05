@@ -16,11 +16,9 @@ class Index extends ControllerBase
 	{
         $login_service = service\Login::getSingleton();
 
-		if ($login_service->checkSession())
-		{
-			Utils::location("?act=user.portal");
-		}
-		Utils::location("?act=index.login");
+		if ($login_service->checkSession()) { Utils::location("?act=user.portal"); }
+
+		return new view\PHPView("index_main.php", $_GET);
 	}
 
 	public function login()
@@ -53,7 +51,7 @@ class Index extends ControllerBase
 
 		if ($login_result!="0")
 		{
-			return new view\PHPView("index_login.php", $fail_return);
+			Utils::location("/");
 		}
 		Utils::location("?act=user.portal");
 	}
@@ -62,6 +60,6 @@ class Index extends ControllerBase
 	{
         $login_service = service\Login::getSingleton();
 		$login_service->logout();
-		Utils::location("?act=index.main");
+		Utils::location("/");
 	}
 }
