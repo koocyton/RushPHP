@@ -46,7 +46,6 @@ class PDOConnect
 
 	public function fetchRow($table_name, $condition="1")
 	{
-		print_r($condition);
 		if (is_array($condition))
 		{
 			$_condition = "1";
@@ -56,7 +55,6 @@ class PDOConnect
 			}
 			$condition = $_condition;
 		}
-		// echo $condition;exit;
 		$result = $this->fetchAll($table_name, $condition, "*", null, "1");
 		return empty($result) ? array() : current($result);
 	}

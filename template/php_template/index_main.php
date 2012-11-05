@@ -27,7 +27,7 @@
 	<input type="submit" style="width:51px; font-size:16px; height:30px; line-height:30px; padding:2px 2px; margin:10px 9px 0 7px; background-color: #019AD2;  background-image: -moz-linear-gradient(#33BCEF, #019AD2);   background-repeat: repeat-x; border-color: #057ED0; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset; color: #FFFFFF;   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);" value="Go" />
   </form>
   
-  <div style="color:red;">&nbsp;&nbsp;<?php echo $message;?></div>
+  <div style="color:red;">&nbsp;&nbsp;<?php echo $error;?></div>
   </div>
   
   

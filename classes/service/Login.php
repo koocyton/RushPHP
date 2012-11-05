@@ -64,7 +64,6 @@ class Login extends ServiceBase
 	public function login($account, $password)
 	{
         $user_info = $this->User->fetchRow(array("account"=>$account));
-        print_r($user_info);
 		if (empty($user_info))
 		{
 			return 1;

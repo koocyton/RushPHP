@@ -29,7 +29,6 @@ class Index extends ControllerBase
         $login_service = service\Login::getSingleton();
       
 		$login_result  = $login_service->login($account, $password);
-		echo $login_result;exit;
 		switch($login_result)
 		{
 			case 1:
@@ -51,7 +50,7 @@ class Index extends ControllerBase
 
 		if ($login_result!="0")
 		{
-			Utils::location("/");
+			Utils::location("/?error=".urlencode($fail_return["message"]));
 		}
 		Utils::location("?act=user.portal");
 	}
