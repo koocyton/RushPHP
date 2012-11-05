@@ -1,2 +1,2 @@
 <?php
-define("PHPVIEW_TEMPLATE_DIR", ROOT_DIR . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "php_template");
+define("PHPVIEW_TEMPLATE_DIR", RUSH_SITE_DIR . DS . "template" . DS . "php_template");
