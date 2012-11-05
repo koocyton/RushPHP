@@ -27,6 +27,10 @@ class PHPView extends ViewBase
 	{
 		if ($this->assign!=null)
 		{
+			if (is_string($this->assign))
+			{
+				$this->assign = array("assign"=>$this->assign);
+			}
 			foreach($this->assign as $key=>$value)
 			{
 				$$key = $value;

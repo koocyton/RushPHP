@@ -22,7 +22,7 @@ class Login extends ServiceBase
 
 	public function checkSession()
 	{
-		if (!empty($_COOKIE['wess']) && preg_match("^/(.+)_(.+)_(.+)/$", $_COOKIE['wess'], $matchs))
+		if (!empty($_COOKIE['wess']) && preg_match("/^(.+)_(.+)_(.+)$/", $_COOKIE['wess'], $matchs))
 		{
 			$user_id      = $matchs[1];
 			$login_expire = $matchs[2];
@@ -63,8 +63,7 @@ class Login extends ServiceBase
 
 	public function login($account, $password)
 	{
-        $user_info = $this->User->fetchRow("account", $account);
-
+        $user_info = $this->User->fetchRow(array("account"=>$account));
 		if (empty($user_info))
 		{
 			return 1;
@@ -75,7 +74,6 @@ class Login extends ServiceBase
 		}
 		$_COOKIE['wess'] = $user_info["id"] . "_" . NOW_TIME . "_" . $this->createLoginSign($user_info["id"], NOW_TIME);
 		setcookie("wess", $_COOKIE['wess']);
-
 		return 0;
 	}
 }

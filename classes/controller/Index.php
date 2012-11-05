@@ -20,8 +20,7 @@ class Index extends ControllerBase
 		{
 			return new view\PHPView("location.php", "user/portal");
 		}
-
-		return new view\PHPView("index_login.php");
+		return new view\PHPView("location.php", "index/login");
 	}
 
 	public function login()
