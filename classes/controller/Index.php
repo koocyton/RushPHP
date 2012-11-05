@@ -3,7 +3,7 @@ namespace controller;
 
 use RushPHP\ControllerBase;
 use RushPHP\view;
-
+use common\Utils;
 use service;
 
 class Index extends ControllerBase
@@ -18,9 +18,9 @@ class Index extends ControllerBase
 
 		if ($login_service->checkSession())
 		{
-			return new view\PHPView("location.php", "user/portal");
+			Utils::location("?act=user.portal");
 		}
-		return new view\PHPView("location.php", "index/login");
+		Utils::location("?act=index.login");
 	}
 
 	public function login()
@@ -55,13 +55,13 @@ class Index extends ControllerBase
 		{
 			return new view\PHPView("index_login.php", $fail_return);
 		}
-		return new view\PHPView("location.php", "user/portal");
+		Utils::location("?act=user.portal");
 	}
 
 	public function logout()
 	{
         $login_service = service\Login::getSingleton();
 		$login_service->logout();
-		return new view\PHPView("location.php", "index/main");
+		Utils::location("?act=index.main");
 	}
 }

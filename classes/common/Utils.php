@@ -20,4 +20,10 @@ class Utils
 	{
 		return hash("sha256", $string . $key);
 	}
+	
+	public static function location($uri)
+	{
+		header("location:" . $uri);
+		exit;
+	}
 }
