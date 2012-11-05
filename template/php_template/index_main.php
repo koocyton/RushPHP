@@ -5,8 +5,8 @@
 <title> Kunlun.com </title>
 <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1">
 <script>document.domain='doopp.com'</script>
-<link rel="stylesheet" href="https://twimg0-a.akamaihd.net/a/1351819575/t1/css/t1_core_logged_out.bundle.css" type="text/css" media="screen">
-<link rel="stylesheet" href="https://twimg0-a.akamaihd.net/a/1351819575/t1/css/t1_more.bundle.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/t1_core_logged_out.bundle.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/t1_more.bundle.css" type="text/css" media="screen">
 <script>
 (function(){function b(){var b=a.href.match(/#(.)(.*)$/);return b&&b[1]=="!"&&b[2].replace(/^\//,"")}function c(a){if(!a)return!1;a=a.replace(/^#|\/$/,"").toLowerCase();return a.match(/^[a-z0-9_]+$/)?a:!1}function d(b){var b=c(b);if(b){var d=document.referrer||"none"
 ,e="ev_redir_"+b+"="+d+"; path=/";document.cookie=e;a.replace("/hashtag/"+b)}}function e(){var c=b();c&&a.replace("//"+a.host+"/"+c);a.hash!=""&&d(a.hash.substr(1).toLowerCase())}var a=window.location;e();window.addEventListener?window.addEventListener("hashchange"
@@ -90,7 +90,7 @@
   
 
   <div class="front-bg">
-    <img class="front-image" src="https://si0.twimg.com/a/1351819575/t1/img/front_page/jp-mountain@2x.jpg">
+    <img class="front-image" src="image/jp-mountain@2x.jpg">
   </div>
 
   <div class="front-card">
@@ -136,13 +136,8 @@
           </label>
           <span class="separator">&middot;</span>
           <a class="forgot" href="/account/resend_password">忘记密码?</a>
+          <span class="forgot" style="color:red;float:right;padding:3px 0;"><?php echo $error;?></span>
         </div>
-    
-        <input type="hidden" name="return_to_ssl" value="true">
-    
-        <input type="hidden" name="scribe_log">
-        <input type="hidden" name="redirect_after_login" value="/">
-        <input type="hidden" value="c7d31d44b8085f96b6107e40699f86b8be201a40" name="authenticity_token">
       </form>
     </div>
       
@@ -171,4 +166,4 @@
   <input type="hidden" id="swift-module-path" value="https://si0.twimg.com/c/swift/zh-cn">
 
   
-    <script src="https://si0.twimg.com/c/swift/init.ef644480fe2a53578f7ce4eda13396e86b6fa74a.js"></script>
+    <script src="js/init.jquery.js"></script>
