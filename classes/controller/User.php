@@ -1,10 +1,7 @@
 <?php
 namespace controller;
 
-use RushPHP\ControllerBase;
 use RushPHP\view;
-use common\Utils;
-use service;
 
 class User extends AppController
 {

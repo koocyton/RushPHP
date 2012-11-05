@@ -23,7 +23,8 @@
 			<div id="main_layout">
 
 				<div id="left_layout">
-					<div id="appicons_layout"></div><div id="paging_layout"></div>
+					<div id="appicons_layout"></div>
+					<div id="paging_layout"><a href="?act=index.logout">Logout</a></div>
 				</div>
 
 				<div id="right_layout">
