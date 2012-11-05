@@ -47,10 +47,9 @@ class Index extends ControllerBase
 				$fail_return = array("code"=>"9", "message"=>"未知的错误，请稍后重试");
 				break;
 		}
-
 		if ($login_result!="0")
 		{
-			Utils::location("/?error=".urlencode($fail_return["message"]));
+			Utils::location("?error=".urlencode($fail_return["message"]));
 		}
 		Utils::location("?act=user.portal");
 	}

@@ -30,7 +30,7 @@ class Login extends ServiceBase
 
 			$hash_login_sign = $this->createLoginSign($user_id, $login_expire);
 
-			if ($login_expire>time() && $hash_login_sign==$login_sign)
+			if ($login_expire>=NOW_TIME-3600*24 && $login_expire<=NOW_TIME && $hash_login_sign==$login_sign)
 			{
 				return $user_id;
 			}
@@ -64,6 +64,7 @@ class Login extends ServiceBase
 	public function login($account, $password)
 	{
         $user_info = $this->User->fetchRow(array("account"=>$account));
+        // print_r($user_info);
 		if (empty($user_info))
 		{
 			return 1;
