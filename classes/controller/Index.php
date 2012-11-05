@@ -31,7 +31,7 @@ class Index extends ControllerBase
         $login_service = service\Login::getSingleton();
       
 		$login_result  = $login_service->login($account, $password);
-		
+		echo $login_result;exit;
 		switch($login_result)
 		{
 			case 1:
