@@ -11,6 +11,11 @@ class Index extends ControllerBase
 	public function beforeFilter() {}
 
 	public function afterFilter() {}
+	
+	public function test()
+	{
+		return new view\PHPView("index_test.php", $_GET);
+	}
 
 	public function main()
 	{
