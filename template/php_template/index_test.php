@@ -143,17 +143,30 @@ label {
     text-rendering: optimizelegibility;
 }
 .front-signin{
-    position: absolute;
-    top: 0;
-    left: 536px;
-    height: 108px;
-    width: 300px;	
-    background: -moz-linear-gradient(center top , #FFFFFF 0px, #DDDDDD 100%) repeat scroll 0 0 transparent;
-    border-bottom: 1px solid #CCCCCC;
-    border-left: 1px solid #EEEEEE;
-    border-right: 1px solid #EEEEEE;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    border-radius: 4px 4px 4px 4px;
+	position:absolute;
+    top:0;
+    left:536px;
+    width:300px;
+    height:108px;
+	-webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow:0 1px 0 rgba(0,0,0,.1);
+    -moz-box-shadow:0 1px 0 rgba(0,0,0,.1);
+    box-shadow:0 1px 0 rgba(0,0,0,.1);
+	padding:0;
+    margin:0;
+	background:#fff;
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fff),color-stop(100%,#ddd));
+    background:-webkit-linear-gradient(top,#fff 0,#ddd 100%);
+    background:-moz-linear-gradient(top,#fff 0,#ddd 100%);
+    background:-ms-linear-gradient(top,#fff 0,#ddd 100%);
+    background:-o-linear-gradient(top,#fff 0,#ddd 100%);
+    background:linear-gradient(top,#fff 0,#ddd 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#dddddd',GradientType=0);
+    border-left:solid 1px #eee;
+    border-right:solid 1px #eee;
+    border-bottom:solid 1px #ccc;
 }
 .front-signin .username{
 	left: 12px;
@@ -176,29 +189,31 @@ label {
     color: #999999;
 }
 .front-signin .username .account-input{
-	width: 266px;
-    height: 20px;
-    border: 1px solid #CCCCCC;
-    box-shadow: 0 1px 0 #EEEEEE inset, 0 1px 0 #FFFFFF;
-    position: absolute;
+	direction:rtl;
+	text-align:left;
 }
-.placeholder {
-    -moz-user-select: none;
-    bottom: 1px;
-    color: #999999;
-    cursor: text;
-    font-size: 13px;
-    height: 20px;
-    left: 2px;
-    line-height: 20px;
-    padding: 4px;
-    position: absolute;
-    right: 1px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    top: 1px;
-    transition: opacity 0.1s ease 0s, font-size 0.1s ease 0s;
-    white-space: nowrap;
-    z-index: 1;
+.placeholder{
+	position:absolute;
+	top:1px;
+	right:1px;
+	bottom:1px;
+	left:2px;
+	z-index:1;
+	height:20px;
+	padding:4px;
+	font-size:13px;
+	line-height:20px;
+	color:#999;
+	text-shadow:0 1px 0 rgba(255,255,255,.5);
+	white-space:nowrap;
+	cursor:text;
+	-webkit-transition:opacity .1s,font-size .1s;
+	-moz-transition:opacity .1s,font-size .1s;
+	-o-transition:opacity .1s,font-size .1s;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-o-user-select:none;
+	user-select:none;
 }
 .flex-table {
 	left: 12px;
@@ -219,16 +234,25 @@ label {
 	position: relative;
 	float: left;
 }
+.text-input{
+	border:1px solid #ccc;
+	-webkit-box-shadow:inset 0 1px 0 #eee,#fff 0 1px 0;
+	-moz-box-shadow:inset 0 1px 0 #eee,#fff 0 1px 0;
+	box-shadow:inset 0 1px 0 #eee,#fff 0 1px 0
+}
+.front-signin .username .text-input{width:266px}
+.front-signin .password .text-input{height:30px;*height:20px}
 .password-input {
-	height: 30px;
-    border: 1px solid #CCCCCC;
-    box-shadow: 0 1px 0 #EEEEEE inset, 0 1px 0 #FFFFFF;
-    position: absolute;
-    top: 0;
-    -moz-box-sizing: border-box;
-    display: block;
-    line-height: normal;
-    width: 100%;
+	display:block;
+	width:100%;
+	line-height:normal;
+	height:30px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+	*width:92%;
+	*height:24px;
 }
 .flex-table-secondary {
 	max-width: 1%;
@@ -236,15 +260,47 @@ label {
     vertical-align: top;
 }
 .flex-table-secondary .submit{
-	box-shadow: 0 1px 0 #FFFFFF;
+	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.5);
+	-moz-box-shadow:0 1px 0 rgba(255,255,255,.5);
+	box-shadow:0 1px 0 rgba(255,255,255,.5);
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#33BCEF),color-stop(100%,#019AD2));
+    background:-webkit-linear-gradient(top,#33BCEF 0,#019AD2 100%);
+    background:-moz-linear-gradient(top,#33BCEF 0,#019AD2 100%);
+    background:-ms-linear-gradient(top,#33BCEF 0,#019AD2 100%);
+    background:-o-linear-gradient(top,#33BCEF 0,#019AD2 100%);
+    background:linear-gradient(top,#33BCEF 0,#019AD2 100%);
 	height: 30px;
 	float: right;
 	white-space: nowrap;
 	width: auto;
-	background-color: #019AD2;
-	background-image: linear-gradient(#33BCEF, #019AD2);
-	background-repeat: repeat-x;
-	border-color: #057ED0;
+	border: 1px solid #057ED0;
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	border-radius: 4px 4px 4px 4px;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 18px;
+	overflow: visible;
+	padding: 5px 10px;
+	position: relative;
+}
+.flex-table-secondary .submit:hover{
+	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.5);
+	-moz-box-shadow:0 1px 0 rgba(255,255,255,.5);
+	box-shadow:0 1px 0 rgba(255,255,255,.5);
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#2DADDC),color-stop(100%,#0271BF));
+    background:-webkit-linear-gradient(top,#2DADDC 0,#0271BF 100%);
+    background:-moz-linear-gradient(top,#2DADDC 0,#0271BF 100%);
+    background:-ms-linear-gradient(top,#2DADDC 0,#0271BF 100%);
+    background:-o-linear-gradient(top,#2DADDC 0,#0271BF 100%);
+    background:linear-gradient(top,#2DADDC 0,#0271BF 100%);
+	height: 30px;
+	float: right;
+	white-space: nowrap;
+	width: auto;
+	border: 1px solid #057ED0;
 	color: #FFFFFF;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	border-radius: 4px 4px 4px 4px;
@@ -330,8 +386,8 @@ input[type="checkbox"], input[type="radio"] {
 					
       <form action="/?act=index.login" class="signin" method="post">
         <div class="username">
-          <input type="text" id="signin-email" class="account-input" name="account" title="用户名或电子邮件地址" autocomplete="on" tabindex=1>
-          <label for="signin-email" class="placeholder">用户名或电子邮件地址</label>
+          <input type="text" id="signin-email" class="text-input account-input" name="account" title="用户名或电子邮件地址" autocomplete="on" tabindex=1>
+          <label for="signin-email" class="placeholder">账号</label>
         </div>
     
         <table class="flex-table">
@@ -339,7 +395,7 @@ input[type="checkbox"], input[type="radio"] {
           <tr>
             <td class="flex-table-primary">
               <div class="placeholding-input">
-                <input type="password" id="signin-password" class="password-input" name="password" title="密码" tabindex=2>
+                <input type="password" id="signin-password" class="text-input password-input" name="password" title="密码" tabindex=2>
                 <label for="signin-password" class="placeholder">密码</label>
               </div>
             </td>
