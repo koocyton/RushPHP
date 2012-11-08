@@ -5,67 +5,23 @@
 <title> Kunlun.com </title>
 <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1">
 <script>document.domain='doopp.com'</script>
+<script>
+(function(){function a(){document.write="";window.top.location=window.self.location;setTimeout(function(){document.body.innerHTML=""},0);window.self.onload=function(a){document.body.innerHTML=""}}if(window.top!==window.self)try{window.top.location.host||a(
+)}catch(b){a()}})();
+</script>
 <style>
-html {
-}
+html {}
 html, body, #doc, #page-outer { height: 100%; }
-
-body, label, input, textarea, select, button {
-	font-family: "Helvetica Neue",Arial,sans-serif;
-}
-body {
-	overflow-y: scroll;
-	background-color: #292929;
-	color: #333333;
-	font-size: 14px;
-	line-height: 18px;
-	margin: 0;
-	padding: 0;
-}
-form {
-    font-size: 12px;
-    margin-bottom: 0;
-}
-input, textarea, select {
-    background-color: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    border-radius: 3px 3px 3px 3px;
-    display: inline-block;
-    margin: 0;
-    outline: 0 none;
-    padding: 4px;
-    width: 210px;
-}
-label, input, textarea, select {
-    font-size: 13px;
-    line-height: 20px;
-    margin: 0;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-td, th {
-    padding: 0;
-}
-button {
-    border: 0 none;
-    margin: 0;	
-}
-label {
-    color: #333333;
-    cursor: pointer;
-    display: block;
-    margin-bottom: 5px;
-}
-.topbar {
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
-	left: 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 1000;
-}
+body, label, input, textarea, select, button {font-family: "Helvetica Neue",Arial,sans-serif;}
+body {overflow-y: scroll;background-color: #292929;color: #333333;font-size: 14px;line-height: 18px;margin: 0;padding: 0;}
+form {font-size: 12px;margin-bottom: 0;}
+input, textarea, select {background-color: #FFFFFF;border: 1px solid #CCCCCC;border-radius: 3px 3px 3px 3px;display: inline-block;margin: 0;outline: 0 none;padding: 4px;width: 210px;}
+label, input, textarea, select {font-size: 13px;line-height: 20px;margin: 0;}
+table {border-collapse: collapse;border-spacing: 0;}
+td, th {padding: 0;}
+button {border: 0 none;margin: 0;	}
+label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
+.topbar {box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);left: 0;position: fixed;right: 0;top: 0;z-index: 1000;}
 .global-nav {
 	position: relative;
 	width: 100%;
@@ -178,23 +134,10 @@ label {
     overflow: visible;
     color: #999999;
 }
-.front-signin .username{
-	left: 12px;
-    position: absolute;
-    top: 12px;
-    width: 276px;
-    height: 30px;
-    font-size: 13px;
-    overflow: visible;
-    color: #999999;
-}
-.front-signin .username .account-input{
-	direction:rtl;
-	text-align:left;
-}
 .placeholder{
 	position:absolute;
 	top:1px;
+	background-color: #FFFFFF;
 	right:1px;
 	bottom:1px;
 	left:2px;
@@ -235,83 +178,75 @@ label {
 	float: left;
 }
 .text-input{
+	background-color: #FFFFFF;
+	display:block;
+	text-align:left;
 	border:1px solid #ccc;
 	-webkit-box-shadow:inset 0 1px 0 #eee,#fff 0 1px 0;
 	-moz-box-shadow:inset 0 1px 0 #eee,#fff 0 1px 0;
-	box-shadow:inset 0 1px 0 #eee,#fff 0 1px 0
-}
-.front-signin .username .text-input{width:266px}
-.front-signin .password .text-input{height:30px;*height:20px}
-.password-input {
-	display:block;
-	width:100%;
-	line-height:normal;
-	height:30px;
+	box-shadow:inset 0 1px 0 #eee,#fff 0 1px 0;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	-ms-box-sizing:border-box;
-	box-sizing:border-box;
+	height:30px;
+	line-height:normal;
 	*width:92%;
 	*height:24px;
+}
+.text-input:focus{
+	background-color: #FFFFFF;	
+	border:1px solid #56b4ef;
+	-webkit-box-shadow:inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+	-moz-box-shadow:inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+	box-shadow:inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
+}
+.front-signin .username .account-input{
+	width:266px
+}
+.password-input {
+	width:100%;
 }
 .flex-table-secondary {
 	max-width: 1%;
     width: 1%;
     vertical-align: top;
 }
-.flex-table-secondary .submit{
+.flex-table-secondary .btn{
+	height: 30px;
+	float: right;
+	white-space: nowrap;
+	width: auto;
+	border: 1px solid #057ED0;
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	border-radius: 4px 4px 4px 4px;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 18px;
+	overflow: visible;
+	padding: 5px 10px;
+	position: relative;
 	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.5);
 	-moz-box-shadow:0 1px 0 rgba(255,255,255,.5);
 	box-shadow:0 1px 0 rgba(255,255,255,.5);
+}
+.flex-table-secondary .submit{
     background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#33BCEF),color-stop(100%,#019AD2));
     background:-webkit-linear-gradient(top,#33BCEF 0,#019AD2 100%);
     background:-moz-linear-gradient(top,#33BCEF 0,#019AD2 100%);
     background:-ms-linear-gradient(top,#33BCEF 0,#019AD2 100%);
     background:-o-linear-gradient(top,#33BCEF 0,#019AD2 100%);
     background:linear-gradient(top,#33BCEF 0,#019AD2 100%);
-	height: 30px;
-	float: right;
-	white-space: nowrap;
-	width: auto;
-	border: 1px solid #057ED0;
-	color: #FFFFFF;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	border-radius: 4px 4px 4px 4px;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 18px;
-	overflow: visible;
-	padding: 5px 10px;
-	position: relative;
 }
 .flex-table-secondary .submit:hover{
-	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.5);
-	-moz-box-shadow:0 1px 0 rgba(255,255,255,.5);
-	box-shadow:0 1px 0 rgba(255,255,255,.5);
     background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#2DADDC),color-stop(100%,#0271BF));
     background:-webkit-linear-gradient(top,#2DADDC 0,#0271BF 100%);
     background:-moz-linear-gradient(top,#2DADDC 0,#0271BF 100%);
     background:-ms-linear-gradient(top,#2DADDC 0,#0271BF 100%);
     background:-o-linear-gradient(top,#2DADDC 0,#0271BF 100%);
     background:linear-gradient(top,#2DADDC 0,#0271BF 100%);
-	height: 30px;
-	float: right;
-	white-space: nowrap;
-	width: auto;
-	border: 1px solid #057ED0;
-	color: #FFFFFF;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	border-radius: 4px 4px 4px 4px;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 13px;
-	font-weight: bold;
-	line-height: 18px;
-	overflow: visible;
-	padding: 5px 10px;
-	position: relative;
 }
 .remember-forgot {
 	left: 12px;
@@ -381,47 +316,49 @@ input[type="checkbox"], input[type="radio"] {
 					</div>
 					<div class="front-signin">
 					<!-- Login Form Begin //-->
-					
-					
-					
-      <form action="/?act=index.login" class="signin" method="post">
-        <div class="username">
-          <input type="text" id="signin-email" class="text-input account-input" name="account" title="用户名或电子邮件地址" autocomplete="on" tabindex=1>
-          <label for="signin-email" class="placeholder">账号</label>
-        </div>
-    
-        <table class="flex-table">
-          <tbody>
-          <tr>
-            <td class="flex-table-primary">
-              <div class="placeholding-input">
-                <input type="password" id="signin-password" class="text-input password-input" name="password" title="密码" tabindex=2>
-                <label for="signin-password" class="placeholder">密码</label>
-              </div>
-            </td>
-            <td class="flex-table-secondary">
-              <button type="submit" class="submit" tabindex=4>
-                登录
-              </button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-    
-        <div class="remember-forgot">
-          <label class="remember">
-            <input type="checkbox" value="1" name="remember_me" tabindex=3>
-            <span>记住我</span>
-          </label>
-          <span class="separator">&middot;</span>
-          <a class="forgot" href="/account/resend_password">忘记密码?</a>
-          <span class="forgot" style="color:red;float:right;padding:3px 0;"></span>
-        </div>
-      </form>
-    
-					
-					
-					
+
+
+					<form action="/?act=index.login" class="signin" method="post">
+						<div style="display:none;">
+						<input type="text" />
+						<input type="password" />
+						<input type="password" />
+						</div>
+
+				        <div class="username">
+				          <input type="text" id="signin-account" class="text-input account-input" name="account" title="用户名或电子邮件地址" autocomplete="on" tabindex=1>
+				          <label id="signin-account-label" for="signin-account" class="placeholder">账号</label>
+				        </div>
+				    
+				        <table class="flex-table">
+				          <tbody>
+				          <tr>
+				            <td class="flex-table-primary">
+				              <div class="placeholding-input">
+				                <input type="password" id="signin-password" class="text-input password-input" name="password" title="密码" tabindex=2>
+				                <label id="signin-password-label" for="signin-password" class="placeholder">密码</label>
+				              </div>
+				            </td>
+				            <td class="flex-table-secondary">
+				              <button type="submit" class="submit btn" tabindex=4>
+				                登录
+				              </button>
+				            </td>
+				          </tr>
+				          </tbody>
+				        </table>
+				    
+				        <div class="remember-forgot">
+				          <label class="remember">
+				            <input type="checkbox" value="1" name="remember_me" tabindex=3>
+				            <span>记住我</span>
+				          </label>
+				          <span class="separator">&middot;</span>
+				          <a class="forgot" href="/index.php?act=index.test#abc">忘记密码?</a>
+				          <span class="forgot" style="color:red;float:right;padding:3px 0;">error</span>
+				        </div>
+				      </form>
+
 					<!-- Login Form End //-->
 					</div>
 				</div>
@@ -429,4 +366,7 @@ input[type="checkbox"], input[type="radio"] {
 		</div>
 	</div>
 </body>
+<script>
+(function(){function b(){var b=a.href.match(/#(.)(.*)$/);return b&&b[1]=="!"&&b[2].replace(/^\//,"")}function c(a){if(!a)return!1;a=a.replace(/^#|\/$/,"").toLowerCase();return a.match(/^[a-z0-9_]+$/)?a:!1}function d(b){var b=c(b);if(b){var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";document.cookie=e;a.replace("/index.php?act=index.test#"+b)}}function e(){var c=b();c&&a.replace("//"+a.host+"/"+c);a.hash!=""&&d(a.hash.substr(1).toLowerCase());}var a=window.location;e();window.addEventListener?window.addEventListener("hashchange",e,!1):window.attachEvent&&window.attachEvent("onhashchange",e)})();(function(){function ev(e,o,d){window.addEventListener?e.addEventListener(o,function(){hd(d)},!1):e.attachEvent&&window.attachEvent(o,function(){hd(d)});}function hd(d){var de=document.getElementById(d);var le=document.getElementById(d+"-label");le.style.display=(de.value=="")?"block":"none";}function c(){var ade = document.getElementById("signin-account");ev(ade, "keydown", "signin-account");ev(ade, "keyup", "signin-account");ev(ade, "change", "signin-account");ev(ade, "focus", "signin-account");ev(ade, "blur", "signin-account");	var pde = document.getElementById("signin-password");ev(pde, "keydown", "signin-password");ev(pde, "keyup", "signin-password");ev(pde, "change", "signin-password");ev(pde, "focus", "signin-password");ev(pde, "blur", "signin-password");ade.focus();hd("signin-account");}c()}())
+</script>
 </html>
