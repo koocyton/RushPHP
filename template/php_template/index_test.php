@@ -26,6 +26,38 @@ form {
     font-size: 12px;
     margin-bottom: 0;
 }
+input, textarea, select {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    margin: 0;
+    outline: 0 none;
+    padding: 4px;
+    width: 210px;
+}
+label, input, textarea, select {
+    font-size: 13px;
+    line-height: 20px;
+    margin: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+td, th {
+    padding: 0;
+}
+button {
+    border: 0 none;
+    margin: 0;	
+}
+label {
+    color: #333333;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 5px;
+}
 .topbar {
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
 	left: 0;
@@ -110,22 +142,21 @@ form {
     margin: 0;
     text-rendering: optimizelegibility;
 }
-
 .front-signin{
+    position: absolute;
+    top: 0;
+    left: 536px;
+    height: 108px;
+    width: 300px;	
     background: -moz-linear-gradient(center top , #FFFFFF 0px, #DDDDDD 100%) repeat scroll 0 0 transparent;
     border-bottom: 1px solid #CCCCCC;
     border-left: 1px solid #EEEEEE;
     border-right: 1px solid #EEEEEE;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     border-radius: 4px 4px 4px 4px;
-    height: 108px;
-    left: 536px;
-    position: absolute;
-    top: 0;
-    width: 300px;
 }
-.front-signin .username {
-    left: 12px;
+.front-signin .username{
+	left: 12px;
     position: absolute;
     top: 12px;
     width: 276px;
@@ -133,51 +164,25 @@ form {
     font-size: 13px;
     overflow: visible;
     color: #999999;
-    font-size: 12px;
 }
-
-.front-signin .username .text-input {
-    width: 266px;
+.front-signin .username{
+	left: 12px;
+    position: absolute;
+    top: 12px;
+    width: 276px;
+    height: 30px;
+    font-size: 13px;
+    overflow: visible;
+    color: #999999;
 }
-.front-card .text-input {
+.front-signin .username .account-input{
+	width: 266px;
     height: 20px;
-}
-.front-card .text-input {
     border: 1px solid #CCCCCC;
     box-shadow: 0 1px 0 #EEEEEE inset, 0 1px 0 #FFFFFF;
-}
-.placeholding-input input {
     position: absolute;
-    top: 0;
 }
-input, textarea {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset, 0 1px 0 rgba(255, 255, 255, 0.075);
-    transition: background 0.2s linear 0s;
-}
-input, textarea {
-}
-input, textarea, select {
-    background-color: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    border-radius: 3px 3px 3px 3px;
-    display: inline-block;
-    margin: 0;
-    outline: 0 none;
-    padding: 4px;
-    width: 210px;
-}
-label, input, textarea, select {
-    font-size: 13px;
-    line-height: 20px;
-    margin: 0;
-}
-body, label, input, textarea, select, button {
-    font-family: "Helvetica Neue",Arial,sans-serif;
-}
-.placeholding-input input:focus + .placeholder {
-    opacity: 0.6;
-}
-.placeholding-input .placeholder {
+.placeholder {
     -moz-user-select: none;
     bottom: 1px;
     color: #999999;
@@ -195,103 +200,110 @@ body, label, input, textarea, select, button {
     white-space: nowrap;
     z-index: 1;
 }
-label {
-    color: #333333;
-    cursor: pointer;
-    display: block;
-    margin-bottom: 5px;
-}
-.front-signin .password-signin {
-    left: 12px;
-    position: absolute;
-    top: 48px;
-    width: 276px;
-}
 .flex-table {
-    width: 100%;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
+	left: 12px;
+	position: absolute;
+	top: 48px;
+	width: 276px;
 }
 .flex-table-primary {
-    padding-right: 5px;
-    width: 99%;
+	padding-right: 5px;
+	width: 99%;
+	vertical-align: top;
 }
-.flex-table-primary, .flex-table-secondary {
+.placeholding-input {
+	width: 100%;
+	height: 30px;
+	font-size: 13px;
+	overflow: visible;
+	position: relative;
+	float: left;
+}
+.password-input {
+	height: 30px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 0 #EEEEEE inset, 0 1px 0 #FFFFFF;
+    position: absolute;
+    top: 0;
+    -moz-box-sizing: border-box;
+    display: block;
+    line-height: normal;
+    width: 100%;
+}
+.flex-table-secondary {
+	max-width: 1%;
+    width: 1%;
     vertical-align: top;
 }
-td, th {
-    padding: 0;
+.flex-table-secondary .submit{
+	box-shadow: 0 1px 0 #FFFFFF;
+	height: 30px;
+	float: right;
+	white-space: nowrap;
+	width: auto;
+	background-color: #019AD2;
+	background-image: linear-gradient(#33BCEF, #019AD2);
+	background-repeat: repeat-x;
+	border-color: #057ED0;
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	border-radius: 4px 4px 4px 4px;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 18px;
+	overflow: visible;
+	padding: 5px 10px;
+	position: relative;
 }
-.front-signin .remember-forgot {
-    left: 12px;
+.remember-forgot {
+	left: 12px;
+	margin: 0;
+	position: absolute;
+	top: 82px;
+	width: 276px;
+}
+.front-signin .remember {
+	color: #999999;
+    display: inline;
+    font-size: 11px;
+    line-height: 13px;
     margin: 0;
-    position: absolute;
-    top: 82px;
-    width: 276px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    text-align: left;
 }
-.front-signin .submit {
-    box-shadow: 0 1px 0 #FFFFFF;
-    height: 30px;
+.front-signin .remember input[type="checkbox"] {
+    height: 13px;
+    margin: 0;
+    vertical-align: text-top;
 }
-.flex-table-btn {
-    float: right;
-    white-space: nowrap;
+input[type="checkbox"], input[type="radio"] {
+    background-color: transparent;
+    border: 0 none;
+    cursor: pointer;
+    height: auto;
+    line-height: normal;
+    margin: 3px 0;
+    padding: 0;
     width: auto;
 }
-.primary-btn, .following.first-hover .follow-btn:hover, .following .follow-btn, .following .follow-button.cancel-hover-style:hover, .following .follow-button {
-    background-color: #019AD2;
-    background-image: linear-gradient(#33BCEF, #019AD2);
-    background-repeat: repeat-x;
-    border-color: #057ED0;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
-    color: #FFFFFF;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
-.btn {
-    background-color: #DDDDDD;
-    background-image: linear-gradient(#FFFFFF, #DDDDDD);
-    background-repeat: repeat-x;
-}
-.btn {
-    background-color: #CCCCCC;
-    background-repeat: no-repeat;
-    border: 1px solid #CCCCCC;
-    border-radius: 4px 4px 4px 4px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    color: #333333;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 13px;
+.front-signin .separator {
+    color: #999999;
     font-weight: bold;
-    line-height: 18px;
-    overflow: visible;
-    padding: 5px 10px;
-    position: relative;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    margin: 0 1px 0 2px;
+    display: inline;
+    font-size: 11px;
+    line-height: 13px;
 }
-button {
-    border: 0 none;
-}
-button {
+.front-signin .forgot{
+    color: #999999;
+    display: inline;
+    font-size: 11px;
+    line-height: 13px;
     margin: 0;
-}
-label, input, textarea, select {
-    font-size: 13px;
-    line-height: 20px;
-    margin: 0;
-}
-label {
-    color: #333333;
-    cursor: pointer;
-    display: block;
-    margin-bottom: 5px;
-}
-label, input, textarea, select {
-    font-size: 13px;
-    line-height: 20px;
-    margin: 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    text-decoration: none;
 }
 </style>
 </head>
@@ -318,22 +330,21 @@ label, input, textarea, select {
 					
       <form action="/?act=index.login" class="signin" method="post">
         <div class="username">
-          <input type="text" id="signin-email" class="text-input email-input" name="account" title="用户名或电子邮件地址" autocomplete="on" tabindex=1>
+          <input type="text" id="signin-email" class="account-input" name="account" title="用户名或电子邮件地址" autocomplete="on" tabindex=1>
           <label for="signin-email" class="placeholder">用户名或电子邮件地址</label>
         </div>
     
-        <table class="flex-table password-signin">
+        <table class="flex-table">
           <tbody>
           <tr>
             <td class="flex-table-primary">
-              <div class="placeholding-input password flex-table-form">
-                <input type="password" id="signin-password" class="text-input flex-table-input" name="password" title="密码" tabindex=2>
+              <div class="placeholding-input">
+                <input type="password" id="signin-password" class="password-input" name="password" title="密码" tabindex=2>
                 <label for="signin-password" class="placeholder">密码</label>
               </div>
             </td>
             <td class="flex-table-secondary">
-              <button type="submit" class="submit btn primary-btn flex-table-btn js-submit" tabindex=4>
-                
+              <button type="submit" class="submit" tabindex=4>
                 登录
               </button>
             </td>
