@@ -320,7 +320,7 @@ input[type="checkbox"], input[type="radio"] {
 
 					<form action="/?act=index.login" class="signin" method="post">
 				        <div class="username">
-				          <input type="text" id="signin-account" class="text-input account-input" name="account" placeholder="账号" autocomplete="on" tabindex=1>
+				          <input type="text" id="signin-account" class="text-input account-input" name="account" value="<?php echo $account;?>" placeholder="账号" autocomplete="on" tabindex=1>
 				        </div>
 				    
 				        <table class="flex-table">
@@ -328,7 +328,7 @@ input[type="checkbox"], input[type="radio"] {
 				          <tr>
 				            <td class="flex-table-primary">
 				              <div class="placeholding-input">
-				                <input type="password" id="signin-password" class="text-input password-input" name="password" placeholder="密码" tabindex=2>
+				                <input type="password" id="signin-password" class="text-input password-input" name="password" value="<?php echo $password;?>" placeholder="密码" tabindex=2>
 				              </div>
 				            </td>
 				            <td class="flex-table-secondary">

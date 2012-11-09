@@ -63,23 +63,16 @@ class Login extends ServiceBase
 
 	public function login($account, $password, $remember_me=false)
 	{
-        $user_info = $this->User->fetchRow(array("account"=>$account));
+		if (empty($account))  return 1; // 用户名不能为空
+		if (empty($password)) return 2; // 密码不能为空
 
-		if (empty($user_info))
-		{
-			return 1;
-		}
-		else if ( $user_info["password"] != md5($password . "_#\$W%z9H") )
-		{
-			return 2;
-		}
+        $user_info = $this->User->fetchRow(array("account"=>$account));
+		if (empty($user_info)) return 3; // 用户不存在
+		if ($user_info["password"]!=md5($password."_#\$W%z9H")) return 4; // 密码不正确
 
 		$_COOKIE['wess'] = $user_info["id"] . "_" . NOW_TIME . "_" . $this->createLoginSign($user_info["id"], NOW_TIME);
-		
 		$expire = ($remember_me==true) ? 86400 * 30 + NOW_TIME : 0;
-
 		setcookie("wess", $_COOKIE['wess'], $expire);
-
 		return 0;
 	}
 }
