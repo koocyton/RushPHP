@@ -307,7 +307,7 @@ input[type="checkbox"], input[type="radio"] {
 		<div id="page-outer">
 			<div class="front-container">
 				<div class="front-bg">
-					<img src="image/jp-mountain@3x.jpg" class="front-image">
+					<img src="image/wuyaowang.jpg" class="front-image">
 				</div>
 				<div class="front-card">
 					<div class="front-welcome">
