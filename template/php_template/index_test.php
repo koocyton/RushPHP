@@ -139,6 +139,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	top:1px;
 	background-color: #FFFFFF;
 	right:1px;
+	width:90%;
 	bottom:1px;
 	left:2px;
 	z-index:1;
@@ -311,7 +312,7 @@ input[type="checkbox"], input[type="radio"] {
 				<div class="front-card">
 					<div class="front-welcome">
 						<div class="front-welcome-text">
-							<p>在这里，一起探寻变化的大千世界。</p>
+							<p>元芳 ~~ </p>
 						</div>
 					</div>
 					<div class="front-signin">
