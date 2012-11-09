@@ -253,7 +253,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	left: 12px;
 	margin: 0;
 	position: absolute;
-	top: 82px;
+	top: 83px;
 	width: 276px;
 }
 .front-signin .remember {
@@ -307,7 +307,7 @@ input[type="checkbox"], input[type="radio"] {
 		<div id="page-outer">
 			<div class="front-container">
 				<div class="front-bg">
-					<img src="image/wuyaowang.jpg" class="front-image">
+					<img src="/image/wuyaowang.jpg" class="front-image">
 				</div>
 				<div class="front-card">
 					<div class="front-welcome">
@@ -318,17 +318,9 @@ input[type="checkbox"], input[type="radio"] {
 					<div class="front-signin">
 					<!-- Login Form Begin //-->
 
-
 					<form action="/?act=index.login" class="signin" method="post">
-						<div style="display:none;">
-						<input type="text" />
-						<input type="password" />
-						<input type="password" />
-						</div>
-
 				        <div class="username">
-				          <input type="text" id="signin-account" class="text-input account-input" name="account" title="用户名或电子邮件地址" autocomplete="on" tabindex=1>
-				          <label id="signin-account-label" for="signin-account" class="placeholder">账号</label>
+				          <input type="text" id="signin-account" class="text-input account-input" name="account" placeholder="账号" autocomplete="on" tabindex=1>
 				        </div>
 				    
 				        <table class="flex-table">
@@ -336,8 +328,7 @@ input[type="checkbox"], input[type="radio"] {
 				          <tr>
 				            <td class="flex-table-primary">
 				              <div class="placeholding-input">
-				                <input type="password" id="signin-password" class="text-input password-input" name="password" title="密码" tabindex=2>
-				                <label id="signin-password-label" for="signin-password" class="placeholder">密码</label>
+				                <input type="password" id="signin-password" class="text-input password-input" name="password" placeholder="密码" tabindex=2>
 				              </div>
 				            </td>
 				            <td class="flex-table-secondary">
@@ -351,12 +342,12 @@ input[type="checkbox"], input[type="radio"] {
 				    
 				        <div class="remember-forgot">
 				          <label class="remember">
-				            <input type="checkbox" value="1" name="remember_me" tabindex=3>
+				            <input type="checkbox" onfocus="this.blur();" value="1" name="remember_me" tabindex=3>
 				            <span>记住我</span>
 				          </label>
 				          <span class="separator">&middot;</span>
-				          <a class="forgot" href="/index.php?act=index.test#abc">忘记密码?</a>
-				          <span class="forgot" style="color:red;float:right;padding:3px 0;">error</span>
+				          <a class="forgot" href="/?msg=<?php echo urlencode("毛杭军可帮你找回密码");?>">忘记密码?</a>
+				          <span class="forgot" style="color:red;float:right;padding:3px 0;"><?php echo $msg;?></span>
 				        </div>
 				      </form>
 
@@ -368,6 +359,6 @@ input[type="checkbox"], input[type="radio"] {
 	</div>
 </body>
 <script>
-(function(){function b(){var b=a.href.match(/#(.)(.*)$/);return b&&b[1]=="!"&&b[2].replace(/^\//,"")}function c(a){if(!a)return!1;a=a.replace(/^#|\/$/,"").toLowerCase();return a.match(/^[a-z0-9_]+$/)?a:!1}function d(b){var b=c(b);if(b){var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";document.cookie=e;a.replace("/index.php?act=index.test#"+b)}}function e(){var c=b();c&&a.replace("//"+a.host+"/"+c);a.hash!=""&&d(a.hash.substr(1).toLowerCase());}var a=window.location;e();window.addEventListener?window.addEventListener("hashchange",e,!1):window.attachEvent&&window.attachEvent("onhashchange",e)})();(function(){function ev(e,o,d){window.addEventListener?e.addEventListener(o,function(){hd(d)},!1):e.attachEvent&&window.attachEvent(o,function(){hd(d)});}function hd(d){var de=document.getElementById(d);var le=document.getElementById(d+"-label");le.style.display=(de.value=="")?"block":"none";}function c(){var ade = document.getElementById("signin-account");ev(ade, "keydown", "signin-account");ev(ade, "keyup", "signin-account");ev(ade, "change", "signin-account");ev(ade, "focus", "signin-account");ev(ade, "blur", "signin-account");	var pde = document.getElementById("signin-password");ev(pde, "keydown", "signin-password");ev(pde, "keyup", "signin-password");ev(pde, "change", "signin-password");ev(pde, "focus", "signin-password");ev(pde, "blur", "signin-password");ade.focus();hd("signin-account");}c()}())
+(function(){function b(){var b=a.href.match(/#(.)(.*)$/);return b&&b[1]=="!"&&b[2].replace(/^\//,"")}function c(a){if(!a)return!1;a=a.replace(/^#|\/$/,"").toLowerCase();return a.match(/^[a-z0-9_]+$/)?a:!1}function d(b){var b=c(b);if(b){var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";document.cookie=e;a.replace("/#"+b)}}function e(){var c=b();c&&a.replace("//"+a.host+"/"+c);a.hash!=""&&d(a.hash.substr(1).toLowerCase());}var a=window.location;e();window.addEventListener?window.addEventListener("hashchange",e,!1):window.attachEvent&&window.attachEvent("onhashchange",e)})();
 </script>
 </html>

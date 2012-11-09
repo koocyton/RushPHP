@@ -61,10 +61,10 @@ class Login extends ServiceBase
 		setcookie("wess", null);
 	}
 
-	public function login($account, $password)
+	public function login($account, $password, $remember_me=false)
 	{
         $user_info = $this->User->fetchRow(array("account"=>$account));
-        // print_r($user_info);
+
 		if (empty($user_info))
 		{
 			return 1;
@@ -73,8 +73,13 @@ class Login extends ServiceBase
 		{
 			return 2;
 		}
+
 		$_COOKIE['wess'] = $user_info["id"] . "_" . NOW_TIME . "_" . $this->createLoginSign($user_info["id"], NOW_TIME);
-		setcookie("wess", $_COOKIE['wess']);
+		
+		$expire = ($remember_me==true) ? 86400 * 30 + NOW_TIME : 0;
+
+		setcookie("wess", $_COOKIE['wess'], $expire);
+
 		return 0;
 	}
 }

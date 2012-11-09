@@ -11,11 +11,6 @@ class Index extends ControllerBase
 	public function beforeFilter() {}
 
 	public function afterFilter() {}
-	
-	public function test()
-	{
-		return new view\PHPView("index_test.php", $_GET);
-	}
 
 	public function main()
 	{
@@ -30,10 +25,13 @@ class Index extends ControllerBase
 	{
 		$account       = $_POST["account"];
 		$password      = $_POST['password'];
+		$remember_me   = empty($_POST['remember_me']) ? 0 : 1;
+
 		$fail_return   = array("code"=>"", "message"=>"");
+
         $login_service = service\Login::getSingleton();
       
-		$login_result  = $login_service->login($account, $password);
+		$login_result  = $login_service->login($account, $password, $remember_me);
 		switch($login_result)
 		{
 			case 1:
@@ -54,7 +52,7 @@ class Index extends ControllerBase
 		}
 		if ($login_result!="0")
 		{
-			Utils::location("?error=".urlencode($fail_return["message"]));
+			Utils::location("?msg=".urlencode($fail_return["message"]));
 		}
 		Utils::location("?act=user.portal");
 	}
