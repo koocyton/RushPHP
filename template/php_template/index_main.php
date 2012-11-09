@@ -332,9 +332,7 @@ input[type="checkbox"], input[type="radio"] {
 				              </div>
 				            </td>
 				            <td class="flex-table-secondary">
-				              <button type="submit" class="submit btn" tabindex=4>
-				                登录
-				              </button>
+				              <input type="submit" class="submit btn" value="登陆" tabindex=4>
 				            </td>
 				          </tr>
 				          </tbody>
@@ -359,6 +357,6 @@ input[type="checkbox"], input[type="radio"] {
 	</div>
 </body>
 <script>
-(function(){function b(){var b=a.href.match(/#(.)(.*)$/);return b&&b[1]=="!"&&b[2].replace(/^\//,"")}function c(a){if(!a)return!1;a=a.replace(/^#|\/$/,"").toLowerCase();return a.match(/^[a-z0-9_]+$/)?a:!1}function d(b){var b=c(b);if(b){var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";document.cookie=e;a.replace("/#"+b)}}function e(){var c=b();c&&a.replace("//"+a.host+"/"+c);a.hash!=""&&d(a.hash.substr(1).toLowerCase());}var a=window.location;e();window.addEventListener?window.addEventListener("hashchange",e,!1):window.attachEvent&&window.attachEvent("onhashchange",e)})();
+(function(){function b(){var b=a.href.match(/#(.)(.*)$/);return b&&b[1]=="!"&&b[2].replace(/^\//,"")}function c(a){if(!a)return!1;a=a.replace(/^#|\/$/,"").toLowerCase();return a.match(/^[a-z0-9_]+$/)?a:!1}function d(b){var b=c(b);if(b){var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";document.cookie=e;a.replace("/#"+b)}}function e(){var c=b();c&&a.replace("//"+a.host+"/"+c);a.hash!=""&&d(a.hash.substr(1).toLowerCase());document.getElementById("signin-account").focus();}var a=window.location;e();window.addEventListener?window.addEventListener("hashchange",e,!1):window.attachEvent&&window.attachEvent("onhashchange",e)})();
 </script>
 </html>

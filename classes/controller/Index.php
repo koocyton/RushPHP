@@ -23,6 +23,10 @@ class Index extends ControllerBase
 
 	public function login()
 	{
+		$login_service = service\Login::getSingleton();
+		
+		if ($login_service->checkSession()) { Utils::location("?act=user.portal"); }
+
 		$account       = empty($_POST['account'])     ? "" : $_POST["account"];
 		$password      = empty($_POST['password'])    ? "" : $_POST['password'];
 		$remember_me   = empty($_POST['remember_me']) ? 0  : 1;
