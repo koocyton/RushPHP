@@ -5,6 +5,9 @@
 window.clog = function(){if (window.console && window.console.log && arguments.length>=1){window.console.log("arguments.length : " + arguments.length);for (var ii=0; ii<arguments.length; ii++){window.console.log(arguments[ii]);}}};
 
 /* rushphp_core */
-RC = function()
+RushCall = function(method, data)
 {
+	var methods = {
+		"Account":"Account"
+	}
 }
