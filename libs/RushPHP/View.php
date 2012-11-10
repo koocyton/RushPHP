@@ -58,7 +58,7 @@ class JSView extends ViewBase
 	{
 		header("Content-Type:text/html; charset=utf-8");
 
-		echo "RushCall({method:".$this->callback.",data:".json_encode($this->data)."})";
+		echo "RushCall(\"".$this->callback."\", " . json_encode($this->data). ")";
 	}
 	
 }

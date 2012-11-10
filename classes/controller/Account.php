@@ -10,4 +10,9 @@ class Account extends AppController
 		$data = array();
 		return new view\JSView("Account", $data);
 	}
+	
+	public function save()
+	{
+		
+	}
 }

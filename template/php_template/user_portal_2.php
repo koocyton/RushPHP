@@ -116,9 +116,10 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	function p(b){
 		var w = "<?php echo $wess;?>";
 		var s = "/?act=" + b + "&wess=" + w;
-		var j = new Element("script");
-		j.src = s;
-		j.inject($("js-root"), "top");
+		var j = new Element("script", {
+			src : s,
+			events : { load:function(){this.destroy()} },
+		}).inject($("js-root"), "top");
 	}
 	function e(){
 		var c=b();
