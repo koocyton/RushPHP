@@ -128,9 +128,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	}
 	var a=window.location;
 	e();
-	window.addEventListener
-			? window.addEventListener("hashchange",e,!1)
-			: window.attachEvent&&window.attachEvent("onhashchange",e)
+	window.addListener("hashchange",e);
 })();
 </script>
 </html>
