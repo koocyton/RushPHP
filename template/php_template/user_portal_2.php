@@ -112,12 +112,9 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 		}
 	}
 	function p(b){
-		var w  = "<?php echo $wess;?>>";
+		var w = "<?php echo $wess;?>";
 		var s = "/?act=" + b + "&wess=" + w;
-		clog(s);
-		// var je = new Element("script");
-		// je.src = jsurl;
-		// $("js-root").insert(je);
+		$("div.js-root").prepend("<script type=\"text/javascript\" src=\""+s+"\"><\/script>");
 	}
 	function e(){
 		var c=b();
