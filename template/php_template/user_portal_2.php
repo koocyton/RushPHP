@@ -9,6 +9,7 @@
 (function(){function a(){document.write="";window.top.location=window.self.location;setTimeout(function(){document.body.innerHTML=""},0);window.self.onload=function(a){document.body.innerHTML=""}}if(window.top!==window.self)try{window.top.location.host||a(
 )}catch(b){a()}})();
 </script>
+<script src="/js/rushphp_core.js" type="text/javascript"></script>
 <style>
 html {}
 html, body, #doc, #page-outer { height: 100%; }
@@ -57,16 +58,15 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 }
 .pull-right{
 	float:right;
+    margin-right: 20px;
 }
-.logout{
-    padding-left: 12px;
-    padding-right: 12px;
+.pull-right a{
+    margin-right: 9px;
     color: #BBBBBB;
-    display: block;
     font-weight: bold;
-    height: 12px;
-    line-height: 1;
-    padding: 13px 12px 15px;
+    height: 40px;
+    line-height: 40px;
+    padding: 13px 5px 15px;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
     font-size: 12px;
     position: relative;
@@ -78,6 +78,9 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 		<div class="topbar">
 			<div class="global-nav">
 				<div class="pull-right">
+					<a class="logout" href="/?act=user.portal#appstore">应用士多店</a>
+					<a class="logout" href="/?act=user.portal#account">账号设置</a>
+					<a class="logout" href="/?act=user.portal#developer">开发者</a>
 					<a class="logout" href="/?act=index.logout">退出</a>
 				</div>
 			</div>	
@@ -90,6 +93,43 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	</div>
 </body>
 <script>
-(function(){function b(){var b=a.href.match(/#(.)(.*)$/);return b&&b[1]=="!"&&b[2].replace(/^\//,"")}function c(a){if(!a)return!1;a=a.replace(/^#|\/$/,"").toLowerCase();return a.match(/^[a-z0-9_]+$/)?a:!1}function d(b){var b=c(b);if(b){var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";document.cookie=e;a.replace("/#"+b)}}function e(){var c=b();c&&a.replace("//"+a.host+"/"+c);a.hash!=""&&d(a.hash.substr(1).toLowerCase());}var a=window.location;e();window.addEventListener?window.addEventListener("hashchange",e,!1):window.attachEvent&&window.attachEvent("onhashchange",e)})();
+(function(){
+	function b(){
+		var b=a.href.match(/#(.)(.*)$/);
+		return b&&b[1]=="!"&&b[2].replace(/^\//,"")
+	}
+	function c(a){
+		if(!a)return!1;a=a.replace(/^#|\/$/,"").toLowerCase();
+		return a.match(/^[a-z0-9_]+$/)?a:!1
+	}
+	function d(b){
+		var b=c(b);
+		if(b){
+			var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";
+			document.cookie=e;
+			a.replace("/?act=user.portal#"+b);
+			p(b);
+		}
+	}
+	function p(b){
+		var w  = "<?php echo $wess;?>>";
+		var s = "/?act=" + b + "&wess=" + w;
+		clog(s);
+		// var je = new Element("script");
+		// je.src = jsurl;
+		// $("js-root").insert(je);
+	}
+	function e(){
+		var c=b();
+		c&&a.replace("//"+a.host+"/"+c);
+		a.hash!=""&&d(a.hash.substr(1).toLowerCase());
+	}
+	var a=window.location;
+	e();
+	window.addEventListener
+			? window.addEventListener("hashchange",e,!1)
+			: window.attachEvent&&window.attachEvent("onhashchange",e)
+})();
 </script>
+<div id="js-root"></div>
 </html>

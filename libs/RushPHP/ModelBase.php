@@ -3,6 +3,15 @@ namespace RushPHP;
 
 use RushPHP\helper\DBHelper;
 
+class ResultPool
+{
+	public static $result = array();
+	
+	public static $delete = array();
+	
+	public static $update = array();
+}
+
 class ModelBase
 {
 	public $table  = "";

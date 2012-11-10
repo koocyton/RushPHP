@@ -55,6 +55,11 @@ class Login extends ServiceBase
 		));
 	}
 	
+	public function getSession()
+	{
+		return $_COOKIE['wess'];
+	}
+	
 	public function logout()
 	{
 		$_COOKIE['wess'] = "";

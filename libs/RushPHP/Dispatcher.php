@@ -66,10 +66,15 @@ class HTTPDispatcher extends DispatcherBase
 
 	public function __construct()
 	{
-		if (!empty($_REQUEST['act']) && preg_match('/^([a-z_]+)\.([a-z_]+)$/i', $_REQUEST['act'], $matchs))
+		if (!empty($_REQUEST['act']))
 		{
-			$this->class_name  = ucfirst($matchs[1]);
-			$this->method_name = $matchs[2];
+			$this->class_name = ucfirst($_REQUEST['act']);
+			
+			if (preg_match('/^([a-z_]+)\.([a-z_]+)$/i', $_REQUEST['act'], $matchs))
+			{
+				$this->class_name  = ucfirst($matchs[1]);
+				$this->method_name = $matchs[2];
+			}
 		}
 		$_REQUEST['act'] = $this->class_name . '.' . $this->method_name;
 	}

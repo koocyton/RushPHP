@@ -1,7 +1,7 @@
 <?php
 class DBHelperConfigure
 {
-	public static $db1 = array(
+	public static $default = array(
 		'connect'  => 'PDO',
 		'scheme'   => 'mysql',
 		'host'     => '127.0.0.1',
@@ -45,7 +45,7 @@ class DBHelperConfigure
 }
 
 DBHelperConfigure::$activity = array(
-	'basedata'  => DBHelperConfigure::$db1,
+	'basedata'  => DBHelperConfigure::$default,
 	'cache'     => array(
 					DBHelperConfigure::$mc1,
 					DBHelperConfigure::$mc2,
@@ -55,6 +55,6 @@ DBHelperConfigure::$activity = array(
 );
 
 DBHelperConfigure::$static = array(
-	'basedata'  => DBHelperConfigure::$db1,
+	'basedata'  => DBHelperConfigure::$default,
 	'cache'     => DBHelperConfigure::$cc1,
 );
