@@ -22,6 +22,7 @@ table {border-collapse: collapse;border-spacing: 0;}
 td, th {padding: 0;}
 button {border: 0 none;margin: 0;	}
 label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
+#js-root { display:none; height:0px; width:0px; margin:0; padding:0; }
 .topbar {
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
 	left: 0;
@@ -91,6 +92,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 			</div>
 		</div>
 	</div>
+	<div id="js-root"></div>
 </body>
 <script>
 (function(){
@@ -114,7 +116,9 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	function p(b){
 		var w = "<?php echo $wess;?>";
 		var s = "/?act=" + b + "&wess=" + w;
-		$("div.js-root").prepend("<script type=\"text/javascript\" src=\""+s+"\"><\/script>");
+		var j = new Element("script");
+		j.src = s;
+		j.inject($("js-root"), "top");
 	}
 	function e(){
 		var c=b();
@@ -128,5 +132,4 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 			: window.attachEvent&&window.attachEvent("onhashchange",e)
 })();
 </script>
-<div id="js-root"></div>
 </html>

@@ -42,6 +42,26 @@ class PHPView extends ViewBase
 	}
 }
 
+class JSView extends ViewBase
+{
+	private $data = null;
+
+	private $callback = null;
+
+	public function __construct($callback, $data)
+	{
+		$this->callback = $callback;
+		$this->data     = $data;
+	}
+
+	public function display()
+	{
+		header("Content-Type:text/html; charset=utf-8");
+
+		echo $this->callback."(".json_encode($this->data).");";
+	}
+	
+}
 
 class JSONView extends ViewBase
 {
