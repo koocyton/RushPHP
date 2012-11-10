@@ -8,6 +8,7 @@ window.clog = function(){if (window.console && window.console.log && arguments.l
 RushCall = function(method, data)
 {
 	var methods = {
-		"Account":"Account"
+		"Account":"Account",
+		""
 	}
 }
