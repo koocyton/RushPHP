@@ -91,6 +91,8 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 				<div class="front-bg"></div>
 			</div>
 		</div>
+		<div id="iconbar">345</div>
+		<div class="appframe">123</div>
 	</div>
 	<div id="js-root"></div>
 </body>
