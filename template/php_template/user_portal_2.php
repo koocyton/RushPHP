@@ -14,7 +14,7 @@
 html {}
 html, body, #doc, #page-outer { height: 100%; }
 body, label, input, textarea, select, button {font-family: "Helvetica Neue",Arial,sans-serif;}
-body {overflow-y: scroll;background-color: #292929;color: #333333;font-size: 14px;line-height: 18px;margin: 0;padding: 0;}
+body {overflow-y: scroll; background: #292929 url(/image/background_linen.png) repeat fixed top;color: #333333;font-size: 14px;line-height: 18px;margin: 0;padding: 0;}
 form {font-size: 12px;margin-bottom: 0;}
 input, textarea, select {background-color: #FFFFFF;border: 1px solid #CCCCCC;border-radius: 3px 3px 3px 3px;display: inline-block;margin: 0;outline: 0 none;padding: 4px;width: 210px;}
 label, input, textarea, select {font-size: 13px;line-height: 20px;margin: 0;}
@@ -40,23 +40,6 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	background-image: url("image/twitter_web_sprite_bgs.png");
 	background-repeat: repeat-x;
 }
-.front-container {
-	bottom: 0;
-    display: block;
-    left: 0;
-    max-height: 750px;
-    min-height: 545px;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-.front-bg {
-	background: #292929 url(/image/background_linen.png) repeat fixed top;
-    height: 200%;
-    left: -50%;
-    position: fixed;
-    width: 200%;
-}
 .pull-right{
 	float:right;
     margin-right: 20px;
@@ -72,6 +55,23 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     font-size: 12px;
     position: relative;
 }
+#iconbar{
+    position: absolute;	
+	top: 50px;	
+    left: 5%;
+	width: 90%;
+	height: 580px;
+	border: 1px solid #000000;
+}
+.appframe{
+	display:none;
+    position: absolute;	
+	top: 50px;	
+    left: 5%;
+	width: 90%;
+	height: 580px;
+	border: 1px solid #ffffff;
+}
 </style>
 </head>
 <body>
@@ -86,13 +86,8 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 				</div>
 			</div>	
 		</div>
-		<div id="page-outer">
-			<div class="front-container">
-				<div class="front-bg"></div>
-			</div>
-		</div>
-		<div id="iconbar">345</div>
-		<div class="appframe">123</div>
+		<div id="iconbar"></div>
+		<div class="appframe"></div>
 	</div>
 	<div id="js-root"></div>
 </body>
