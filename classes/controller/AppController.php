@@ -12,7 +12,7 @@ class AppController extends ControllerBase
 	{
 		$login_service = service\Login::getSingleton();
 
-		if (!$login_service->checkSession())
+		if (!$login_service->getUserId())
 		{
 			Utils::location("/?msg=" . urlencode("登陆超时，请重新登陆"));
 		}

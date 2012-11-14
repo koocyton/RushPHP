@@ -16,7 +16,7 @@ class Index extends ControllerBase
 	{
         $login_service = service\Login::getSingleton();
 
-		if ($login_service->checkSession()) { Utils::location("?act=user.portal"); }
+		if ($login_service->getUserId()) { Utils::location("?act=portal"); }
 
 		return new view\PHPView("index_main.php", $_GET);
 	}
@@ -25,7 +25,7 @@ class Index extends ControllerBase
 	{
 		$login_service = service\Login::getSingleton();
 		
-		if ($login_service->checkSession()) { Utils::location("?act=user.portal"); }
+		if ($login_service->getUserId()) { Utils::location("?act=user.portal"); }
 
 		$account       = empty($_POST['account'])     ? "" : $_POST["account"];
 		$password      = empty($_POST['password'])    ? "" : $_POST['password'];
@@ -61,7 +61,7 @@ class Index extends ControllerBase
 			return new view\PHPView("index_main.php", $_POST);
 			// Utils::location("?msg=".urlencode($fail_return["message"]));
 		}
-		Utils::location("?act=user.portal");
+		Utils::location("?act=portal");
 	}
 
 	public function logout()

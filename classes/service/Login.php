@@ -20,7 +20,7 @@ class Login extends ServiceBase
 		return Singleton::get("service\\Login");
 	}
 
-	public function checkSession()
+	public function getUserId()
 	{
 		if (!empty($_COOKIE['wess']) && preg_match("/^(.+)_(.+)_(.+)$/", $_COOKIE['wess'], $matchs))
 		{
