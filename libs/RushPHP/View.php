@@ -1,7 +1,6 @@
 <?php
 namespace RushPHP\view;
 
-
 abstract class ViewBase
 {
 	abstract public function display();

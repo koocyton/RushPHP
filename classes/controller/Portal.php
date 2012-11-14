@@ -11,18 +11,15 @@ class Portal extends AppController
 	 */
 	public function main()
 	{
-		$login_service = service\Login::getSingleton();
-		$wess = $login_service->getSession();
-		return new view\PHPView("user_portal_2.php", array("wess"=>$wess));
+		return new view\PHPView("user_portal_2.php", array("wess"=>$this->wess));
 	}
-	
+
 	/*
 	 * 用户的 APP LIST
 	 */
 	public function apps()
 	{
-		$login_service = service\Login::getSingleton();
-		$wess = $login_service->getUserId();
-		return new view\PHPView("user_portal_2.php", array("wess"=>$wess));
+		$data = "";
+		return new view\JSView("UserApps", $data);
 	}
 }
