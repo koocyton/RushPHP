@@ -5,9 +5,21 @@
 window.clog = function(){if (window.console && window.console.log && arguments.length>=1){window.console.log("arguments.length : " + arguments.length);for (var ii=0; ii<arguments.length; ii++){window.console.log(arguments[ii]);}}};
 
 /* rushphp_core */
+
+// Rush Javacript Request
+window.RushJR = function(request_uri) {
+	var url = "/?act=" + request_uri + "&wess=" + window.server_wess;
+	var elt = new Element("script", {
+		src : url, events : { load:function(){ this.destroy() } },
+	}).inject($("js-root"), "top");
+};
+
+// Rush Ajax Request
+RushAR = function() {};
+
+// Rush Request Callback
 RushCall = function(method, data)
 {
-	var methods = {
-		"Account":"Account",
-	}
-}
+	clog(method, data);
+	//RushCall.method(data);
+};

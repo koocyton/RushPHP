@@ -11,7 +11,7 @@ class Portal extends AppController
 	 */
 	public function main()
 	{
-		return new view\PHPView("user_portal_2.php", array("wess"=>$this->wess));
+		return new view\PHPView("user_portal_2.php", array("wess"=>$this->wess, "server_time"=>NOW_TIME, "server_date"=>NOW_DATE));
 	}
 
 	/*
@@ -19,7 +19,9 @@ class Portal extends AppController
 	 */
 	public function apps()
 	{
-		$data = "";
-		return new view\JSView("UserApps", $data);
+		$user_service = service\User::getSingleton();
+		$user_info = $user_service->getUserAppsInfo($this->user_id);
+		unset($user_info["password"]);
+		return new view\JSView($_GET["callback"], $user_info);
 	}
 }

@@ -40,7 +40,8 @@ class Login extends ServiceBase
 
 	private function createLoginSign($user_id, $login_expire)
 	{
-		return Utils::sha256($user_id . $login_expire, "Sw@Fs234l98#$#%RoGD");
+		return md5($user_id . $login_expire . "Sw@Fs234l98#$#%RoGD");
+		// return Utils::sha256($user_id . $login_expire, "Sw@Fs234l98#$#%RoGD");
 	}
 	
 	public function regist($account, $password, $re_password, $account_info)

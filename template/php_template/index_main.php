@@ -288,7 +288,7 @@ input[type="checkbox"], input[type="radio"] {
     font-size: 11px;
     line-height: 13px;
 }
-.front-signin .forgot{
+.front-signin .forget{
     color: #999999;
     display: inline;
     font-size: 11px;
@@ -345,7 +345,7 @@ input[type="checkbox"], input[type="radio"] {
 				          </label>
 				          <span class="separator">&middot;</span>
 				          <a class="forgot" href="/?msg=<?php echo urlencode("毛杭军可帮你找回密码");?>">忘记密码?</a>
-				          <span class="forgot" style="color:red;float:right;padding:3px 0;"><?php echo $msg;?></span>
+				          <span class="forget" style="color:red;float:right;padding:3px 0;"><?php echo $msg;?></span>
 				        </div>
 				      </form>
 

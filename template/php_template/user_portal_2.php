@@ -4,7 +4,12 @@
 <meta charset="utf-8">
 <title> Kunlun.com </title>
 <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1">
-<script>document.domain='doopp.com'</script>
+<script>
+document.domain='doopp.com';
+window.server_time = "<?php echo $server_time;?>";
+window.server_date = "<?php echo $server_date;?>";
+window.server_wess = "<?php echo $wess;?>";
+</script>
 <script>
 (function(){function a(){document.write="";window.top.location=window.self.location;setTimeout(function(){document.body.innerHTML=""},0);window.self.onload=function(a){document.body.innerHTML=""}}if(window.top!==window.self)try{window.top.location.host||a(
 )}catch(b){a()}})();
@@ -79,9 +84,9 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 		<div class="topbar">
 			<div class="global-nav">
 				<div class="pull-right">
-					<a class="logout" href="/?act=user.portal#appstore">应用士多店</a>
-					<a class="logout" href="/?act=user.portal#account">账号设置</a>
-					<a class="logout" href="/?act=user.portal#developer">开发者</a>
+					<a class="logout" href="/?act=portal#appstore">应用士多店</a>
+					<a class="logout" href="/?act=portal#account">账号设置</a>
+					<a class="logout" href="/?act=portal#developer">开发者</a>
 					<a class="logout" href="/?act=index.logout">退出</a>
 				</div>
 			</div>	
@@ -106,17 +111,9 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 		if(b){
 			var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";
 			document.cookie=e;
-			a.replace("/?act=user.portal#"+b);
-			p(b);
+			a.replace("/?act=portal#"+b);
+			RushJR(b);
 		}
-	}
-	function p(b){
-		var w = "<?php echo $wess;?>";
-		var s = "/?act=" + b + "&wess=" + w;
-		var j = new Element("script", {
-			src : s,
-			events : { load:function(){this.destroy()} },
-		}).inject($("js-root"), "top");
 	}
 	function e(){
 		var c=b();
@@ -127,5 +124,6 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	e();
 	window.addListener("hashchange",e);
 })();
+RushJR("portal.apps&callback=ShowApps");
 </script>
 </html>
