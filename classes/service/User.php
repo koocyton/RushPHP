@@ -6,7 +6,7 @@ use RushPHP\ServiceBase;
 
 class User extends ServiceBase
 {
-	public $use = array("User");
+	public $use = array("User", "App");
 
 	/**
 	 * 返回 service\User
@@ -24,6 +24,8 @@ class User extends ServiceBase
 	public function getUserAppsInfo($user_id)
 	{
 		$user_info = $this->User->fetchRow(array("id"=>$user_id));
-		return $user_info;
+		$sys_apps  = array();
+		$user_apps = $this->App->fetchAll(array("id"=>"in(".$user_info["installed_apps"].")"));
+		return $user_apps;
 	}
 }

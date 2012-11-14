@@ -46,31 +46,35 @@ class PDOConnect
 
 	public function fetchRow($table_name, $condition="1")
 	{
+		$result = $this->fetchAll($table_name, $condition, 0, 1, null, null);
+		return empty($result) ? array() : current($result);
+	}
+	
+	public function fetchAll($table_name, $condition, $start=0, $length=99999999, $order=null, $group=null)
+	{
 		if (is_array($condition))
 		{
 			$_condition = "1";
+
 			foreach($condition as $field=>$value)
 			{
-				$_condition .= " AND `" . $field . "`='" . $value ."'";
+				if (preg_match("/^(in\(|>|<)/", $value))
+				{
+					$_condition .= " AND `" . $field . "` " . $value;
+				}
+				else
+				{
+					$_condition .= " AND `" . $field . "`='" . $value ."'";
+				}
 			}
 			$condition = $_condition;
 		}
-		$result = $this->fetchAll($table_name, $condition, "*", null, "1");
-		return empty($result) ? array() : current($result);
-	}
 
-	public function fetchAll($table_name, $where="1", $fields="*", $order=null, $limit=null)
-	{
-		if (is_array($where))
-		{
-			$where = " 1 " . explode(" AND ", $where);
-		}
+		$query = "SELECT * FROM " . $table_name . " WHERE " . $condition;
 
-		$query = "SELECT " . $fields . " FROM " . $table_name . " WHERE " . $where;
+		$query = empty($order)  ? $query : $query . $order;
 
-		$query = empty($order) ? $query : $query . $order;
-
-		$query = empty($limit) ? $query : $query . " LIMIT "    . $limit;
+		$query = empty($length) ? $query : $query . " LIMIT " . $start . ", " . $length;
 
 		return $this->executeQuery($query);
 	}

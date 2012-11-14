@@ -30,7 +30,7 @@ class ModelBase
 		return $db_help->fetchRow($this->table, $condition);
 	}
 
-	public function fetchAll($condition, $start, $length, $order, $group)
+	public function fetchAll($condition, $start=0, $length=null, $order=null, $group=null)
 	{
 		$db_help = DBHelper::getSingleton($this->config);
 		return $db_help->fetchAll($this->table, $condition, $start, $length, $order, $group);
