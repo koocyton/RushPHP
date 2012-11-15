@@ -344,7 +344,7 @@ input[type="checkbox"], input[type="radio"] {
 				            <span>记住我</span>
 				          </label>
 				          <span class="separator">&middot;</span>
-				          <a class="forgot" href="/?msg=<?php echo urlencode("毛杭军可帮你找回密码");?>">忘记密码?</a>
+				          <a class="forget" href="/?msg=<?php echo urlencode("毛杭军可帮你找回密码");?>">忘记密码?</a>
 				          <span class="forget" style="color:red;float:right;padding:3px 0;"><?php echo $msg;?></span>
 				        </div>
 				      </form>

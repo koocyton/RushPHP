@@ -58,7 +58,7 @@ class PDOConnect
 
 			foreach($condition as $field=>$value)
 			{
-				if (preg_match("/^(in\(|>|<)/", $value))
+				if (preg_match("/^(in ?\\(|\\>|\\<|\\between)/", $value))
 				{
 					$_condition .= " AND `" . $field . "` " . $value;
 				}
@@ -75,7 +75,7 @@ class PDOConnect
 		$query = empty($order)  ? $query : $query . $order;
 
 		$query = empty($length) ? $query : $query . " LIMIT " . $start . ", " . $length;
-
+		// echo $query . "<br>\n";
 		return $this->executeQuery($query);
 	}
 }
