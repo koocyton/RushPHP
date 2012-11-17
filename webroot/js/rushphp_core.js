@@ -20,7 +20,7 @@ RushAR = function(request_url, request_data)
 	var request_form   = $(request_url);
 	var request_method = "get";
 
-	if(request_form!=null && $type(request_form)=="element" && request_form.tagName=="FORM")
+	if(request_form!=null && typeOf(request_form)=="element" && request_form.tagName=="FORM")
 	{
 		request_data   = request_form.toQueryString();
 		request_url    = request_form.getAttribute("action");
@@ -28,7 +28,7 @@ RushAR = function(request_url, request_data)
 	}
 	else
 	{
-		request_method = ($type(request_data)!=false) ? "post" : "get";
+		request_method = (typeOf(request_data)!=false) ? "post" : "get";
 	}
 
 	request_url = request_url + "&wess=" + window.server_wess;
@@ -58,31 +58,31 @@ RushAR = function(request_url, request_data)
 // Rush Request Callback
 var RushCall = function(method)
 {
-
-	if (arguments.length<1) return;
-	
-	if (arguments.length=1) return;
+	if (arguments.length>1)
+	{
+		eval(method + ".apply(window, Array.from(arguments).slice(1));");
+	}
+	else if (arguments.length==1)
 	{
 		eval(method + ".call(window);");
 	}
 	else
 	{
-		var _arguments = arguments.slice(1)
-		eval(method + ".apply(window, _arguments);");
+		return false;
 	}
 };
 
 // UI 库
 var UI = {
-		apps_bar_elt : "apps-bar";
+	apps_bar_elt : "apps-bar"
 };
 
 //在指定界面，显示 icon
 UI.ShowPortalApps = function(apps)
 {
-	var app_bar = $(this.apps_bar_elt);
+	var app_bar = $(UI.apps_bar_elt);
 
-	if (!app_bar && $type(app_bar)=="element") return false;
+	if (typeOf(app_bar)!="element") return false;
 	
 	Array.from(apps).each(function(app){
 		clog(app);

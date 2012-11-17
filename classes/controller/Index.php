@@ -25,7 +25,7 @@ class Index extends ControllerBase
 	{
 		$login_service = service\Login::getSingleton();
 		
-		if ($login_service->getUserId()) { Utils::location("?act=user.portal"); }
+		if ($login_service->getUserId()) { Utils::location("?act=portal"); }
 
 		$account       = empty($_POST['account'])     ? "" : $_POST["account"];
 		$password      = empty($_POST['password'])    ? "" : $_POST['password'];
