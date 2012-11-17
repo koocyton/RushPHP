@@ -202,7 +202,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	box-shadow:inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgba(82,168,236,.6);
 }
 .front-signin .username .account-input{
-	width:266px
+	width:276px
 }
 .password-input {
 	width:100%;

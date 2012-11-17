@@ -20,8 +20,7 @@ class Portal extends AppController
 	public function apps()
 	{
 		$user_service = service\User::getSingleton();
-		$user_info = $user_service->getUserAppsInfo($this->user_id);
-		unset($user_info["password"]);
-		return new view\JSView($_GET["callback"], $user_info);
+		$user_apps = $user_service->getUserAppsInfo($this->user_id);
+		return new view\JSView($_GET["callback"], $user_apps);
 	}
 }

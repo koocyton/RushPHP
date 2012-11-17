@@ -7,7 +7,7 @@ window.clog = function(){if (window.console && window.console.log && arguments.l
 /* rushphp_core */
 
 // Rush Javacript Request
-window.RushJR = function(request_uri) {
+RushJR = function(request_uri, request_data) {
 	var url = "/?act=" + request_uri + "&wess=" + window.server_wess;
 	var elt = new Element("script", {
 		src : url, events : { load:function(){ this.destroy() } },
@@ -15,11 +15,49 @@ window.RushJR = function(request_uri) {
 };
 
 // Rush Ajax Request
-RushAR = function() {};
+RushAR = function(request_url, request_data)
+{
+	var request_form   = $(request_url);
+	var request_method = "get";
+
+	if(request_form!=null && $type(request_form)=="element" && request_form.tagName=="FORM")
+	{
+		request_data   = request_form.toQueryString();
+		request_url    = request_form.getAttribute("action");
+		request_method = (request_form.getAttribute("method")=="post") ? "post" : "get";
+	}
+	else
+	{
+		request_method = ($type(request_data)!=false) ? "post" : "get";
+	}
+
+	if (request_method=="post")
+	{
+		new Request.JSON({
+			url: request_url,
+			method: 'post',
+			onComplete: function(person, json){
+				clog(person,json);
+			}
+		}).send(request_data);
+	}
+	else
+	{
+		new Request.JSON({
+			url: request_url,
+			method: 'get',
+			onComplete: function(person, json){
+				clog(person,json);
+			}
+		}).send();
+	}
+};
 
 // Rush Request Callback
-RushCall = function(method, data)
+var RushCall = {};
+
+// 在指定界面，显示 icon
+RushCall.ShowApps = function(data)
 {
-	clog(method, data);
-	//RushCall.method(data);
-};
+	
+}
