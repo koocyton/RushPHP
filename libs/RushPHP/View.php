@@ -43,21 +43,28 @@ class PHPView extends ViewBase
 
 class JSView extends ViewBase
 {
-	private $data = null;
+	private $args = array();
 
-	private $callback = null;
-
-	public function __construct($callback, $data)
+	public function __construct()
 	{
-		$this->callback = $callback;
-		$this->data     = $data;
+		$this->args = func_get_args();
 	}
 
 	public function display()
 	{
 		header("Content-Type:text/html; charset=utf-8");
 
-		echo "RushCall(\"".$this->callback."\", " . json_encode($this->data). ")";
+		$js_string = "RushCall(";
+
+		foreach ($this->args as $index=>$arg)
+		{
+			$js_string .= is_string($arg) ? "\"".$arg."\", " : json_encode($arg).", ";
+		}
+
+		$js_string .= "null);";
+
+		echo $js_string;
+		// echo "RushCall(\"".$this->callback."\", " . json_encode($this->data). ")";
 	}
 	
 }

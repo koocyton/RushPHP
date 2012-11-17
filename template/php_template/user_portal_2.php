@@ -60,7 +60,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     font-size: 12px;
     position: relative;
 }
-#iconbar{
+#apps-bar{
     position: absolute;	
 	top: 50px;	
     left: 5%;
@@ -68,7 +68,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	height: 580px;
 	border: 1px solid #000000;
 }
-.appframe{
+.apps-frame{
 	display:none;
     position: absolute;	
 	top: 50px;	
@@ -91,8 +91,8 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 				</div>
 			</div>	
 		</div>
-		<div id="iconbar"></div>
-		<div class="appframe"></div>
+		<div id="apps-bar"></div>
+		<div class="apps-frame"></div>
 	</div>
 	<div id="js-root"></div>
 </body>
@@ -124,6 +124,6 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	e();
 	window.addListener("hashchange",e);
 })();
-RushJR("portal.apps&callback=ShowApps");
+RushJR("portal.getUserApps&callback=UI.ShowPortalApps");
 </script>
 </html>

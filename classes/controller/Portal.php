@@ -17,7 +17,7 @@ class Portal extends AppController
 	/*
 	 * 用户的 APP LIST
 	 */
-	public function apps()
+	public function getUserapps()
 	{
 		$user_service = service\User::getSingleton();
 		$user_apps = $user_service->getUserAppsInfo($this->user_id);

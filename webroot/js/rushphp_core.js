@@ -31,6 +31,8 @@ RushAR = function(request_url, request_data)
 		request_method = ($type(request_data)!=false) ? "post" : "get";
 	}
 
+	request_url = request_url + "&wess=" + window.server_wess;
+
 	if (request_method=="post")
 	{
 		new Request.JSON({
@@ -54,10 +56,36 @@ RushAR = function(request_url, request_data)
 };
 
 // Rush Request Callback
-var RushCall = {};
-
-// 在指定界面，显示 icon
-RushCall.ShowApps = function(data)
+var RushCall = function(method)
 {
+
+	if (arguments.length<1) return;
 	
-}
+	if (arguments.length=1) return;
+	{
+		eval(method + ".call(window);");
+	}
+	else
+	{
+		var _arguments = arguments.slice(1)
+		eval(method + ".apply(window, _arguments);");
+	}
+};
+
+// UI 库
+var UI = {
+		apps_bar_elt : "apps-bar";
+};
+
+//在指定界面，显示 icon
+UI.ShowPortalApps = function(apps)
+{
+	var app_bar = $(this.apps_bar_elt);
+
+	if (!app_bar && $type(app_bar)=="element") return false;
+	
+	Array.from(apps).each(function(app){
+		clog(app);
+	});
+};
+
