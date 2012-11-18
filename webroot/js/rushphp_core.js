@@ -83,34 +83,31 @@ var RushUI = new Class({
 
 	initialize: function(options) {
 		this.setOptions(options);
-		this.options.element = $(this.options.element);
-		clog(this.options.element);
 	},
 	
 	flushPortalApps : function(apps)
 	{
 		var app_bar = $(this.options.element);
-		clog(app_bar)
 		if (typeOf(app_bar)!="element") return false;
-
 		var app_bar_ul = app_bar.getFirst();
-
-		if (typeOf(app_bar_ul)!="element")
-		{
+		if (typeOf(app_bar_ul)!="element") {
 			app_bar_ul = new Element("ul").inject(app_bar, "top");
 		}
-		
-		clog(app_bar_ul);
+		Array.from(apps).each(function(app){
+			var app_bar_a = new Element("a",{href:"/?act=portal#runApp"}).inject(app_bar_ul, "bottom");
+			var app_bar_li = new Element("li").inject(app_bar_a, "bottom");
+			var app_bar_div = new Element("div").inject(app_bar_li, "bottom");
+			var app_bar_img = new Element("img",{src:"/image/icon.png"}).inject(app_bar_div, "bottom");
+		});
 	}
 });
 
-Element.implement({
-	RushUI: new RushUI({element:"apps-bar"})
-});
-
 var UI = {
+		
+	RushUI : new RushUI(),
 
 	showPortalApps : function(apps){
-		$("apps-bar").RushUI.flushPortalApps(apps);
+		UI.RushUI.setOptions({element:"apps-bar"});
+		UI.RushUI.flushPortalApps(apps);
 	}
 };

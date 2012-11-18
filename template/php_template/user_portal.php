@@ -16,6 +16,7 @@ window.server_wess = "<?php echo $wess;?>";
 </script>
 <script src="/js/rushphp_core.js" type="text/javascript"></script>
 <style>
+* { margin: 0; padding: 0; }
 html {}
 html, body, #doc, #page-outer { height: 100%; }
 body, label, input, textarea, select, button {font-family: "Helvetica Neue",Arial,sans-serif;}
@@ -63,10 +64,28 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 #apps-bar{
     position: absolute;	
 	top: 50px;	
-    left: 5%;
-	width: 90%;
+    left: 3%;
+	width: 94%;
 	height: 580px;
 	border: 1px solid #000000;
+}
+#apps-bar ul {
+	list-style-type:none;
+	width:100%;
+	height:100%;
+}
+#apps-bar ul li{
+	display:inline;
+	border:1px solid #ccc;
+	float:left;
+	width:150px;
+	height:150px;
+}
+#apps-bar ul li div{
+}
+#apps-bar ul li div img{
+	width:100%;
+	height:100%;
 }
 .apps-frame{
 	display:none;
@@ -103,8 +122,8 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 		return b&&b[1]=="!"&&b[2].replace(/^\//,"")
 	}
 	function c(a){
-		if(!a)return!1;a=a.replace(/^#|\/$/,"").toLowerCase();
-		return a.match(/^[a-z0-9_]+$/)?a:!1
+		if(!a)return!1;a=a.replace(/^#|\/$/,"");//.toLowerCase();
+		return a.match(/^[A-Za-z0-9_]+$/)?a:!1
 	}
 	function d(b){
 		var b=c(b);
@@ -116,9 +135,10 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 		}
 	}
 	function e(){
+		alert(1);
 		var c=b();
 		c&&a.replace("//"+a.host+"/"+c);
-		a.hash!=""&&d(a.hash.substr(1).toLowerCase());
+		a.hash!=""&&d(a.hash.substr(1));//.toLowerCase());
 	}
 	var a=window.location;
 	e();
