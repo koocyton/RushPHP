@@ -74,18 +74,18 @@ var RushCall = function(method)
 
 // UI 库
 var UI = {
-	apps_bar_elt : "apps-bar"
-};
 
-//在指定界面，显示 icon
-UI.ShowPortalApps = function(apps)
-{
-	var app_bar = $(UI.apps_bar_elt);
+	apps_bar_elt : "apps-bar",
 
-	if (typeOf(app_bar)!="element") return false;
-	
-	Array.from(apps).each(function(app){
-		clog(app);
-	});
+	ShowPortalApps : function(apps)
+	{
+		var app_bar = $(this.apps_bar_elt);
+		clog(this.UI);
+		if (typeOf(app_bar)!="element") return false;
+
+		Array.from(apps).each(function(app){
+			clog(app);
+		});
+	}
 };
 

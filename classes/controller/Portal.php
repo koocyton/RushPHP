@@ -11,7 +11,7 @@ class Portal extends AppController
 	 */
 	public function main()
 	{
-		return new view\PHPView("user_portal_2.php", array("wess"=>$this->wess, "server_time"=>NOW_TIME, "server_date"=>NOW_DATE));
+		return new view\PHPView("user_portal.php", array("wess"=>$this->wess, "server_time"=>NOW_TIME, "server_date"=>NOW_DATE));
 	}
 
 	/*
