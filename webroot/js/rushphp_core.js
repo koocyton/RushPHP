@@ -7,7 +7,8 @@ window.clog = function(){if (window.console && window.console.log && arguments.l
 /* rushphp_core */
 
 // Rush Javacript Request
-RushJR = function(request_uri, request_data) {
+RushJR = function(request_uri, request_data)
+{
 	var url = "/?act=" + request_uri + "&wess=" + window.server_wess;
 	var elt = new Element("script", {
 		src : url, events : { load:function(){ this.destroy() } },
@@ -72,20 +73,44 @@ var RushCall = function(method)
 	}
 };
 
-// UI 库
-var UI = {
+var RushUI = new Class({
 
-	apps_bar_elt : "apps-bar",
+	Implements: Options,
 
-	ShowPortalApps : function(apps)
+	options: {
+		element : null
+	},
+
+	initialize: function(options) {
+		this.setOptions(options);
+		this.options.element = $(this.options.element);
+		clog(this.options.element);
+	},
+	
+	flushPortalApps : function(apps)
 	{
-		var app_bar = $(this.apps_bar_elt);
-		clog(this.UI);
+		var app_bar = $(this.options.element);
+		clog(app_bar)
 		if (typeOf(app_bar)!="element") return false;
 
-		Array.from(apps).each(function(app){
-			clog(app);
-		});
+		var app_bar_ul = app_bar.getFirst();
+
+		if (typeOf(app_bar_ul)!="element")
+		{
+			app_bar_ul = new Element("ul").inject(app_bar, "top");
+		}
+		
+		clog(app_bar_ul);
+	}
+});
+
+Element.implement({
+	RushUI: new RushUI({element:"apps-bar"})
+});
+
+var UI = {
+
+	showPortalApps : function(apps){
+		$("apps-bar").RushUI.flushPortalApps(apps);
 	}
 };
-

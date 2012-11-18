@@ -124,6 +124,6 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	e();
 	window.addListener("hashchange",e);
 })();
-RushJR("portal.getUserApps&callback=UI.ShowPortalApps");
+RushJR("portal.getUserApps&callback=UI.showPortalApps");
 </script>
 </html>
