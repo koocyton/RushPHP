@@ -92,6 +92,9 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 #apps-bar ul li div img{
 	width:100%;
 	height:100%;
+	/* -webkit-border-radius:4px; */
+	/* -moz-border-radius:4px; */
+	/* border-radius:4px; */
 }
 #apps-bar ul li div span{
 	color:#eeeeee;

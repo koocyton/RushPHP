@@ -15,7 +15,7 @@ html, body, #doc, #page-outer { height: 100%; }
 body, label, input, textarea, select, button {font-family: "Helvetica Neue",Arial,sans-serif;}
 body {overflow-y: scroll;background-color: #292929;color: #333333;font-size: 14px;line-height: 18px;margin: 0;padding: 0;}
 form {font-size: 12px;margin-bottom: 0;}
-input, textarea, select {background-color: #FFFFFF;border: 1px solid #CCCCCC;border-radius: 3px 3px 3px 3px;display: inline-block;margin: 0;outline: 0 none;padding: 4px;width: 210px;}
+input, textarea, select {background-color: #FFFFFF;border: 1px solid #CCCCCC; -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;display: inline-block;margin: 0;outline: 0 none;padding: 4px;width: 210px;}
 label, input, textarea, select {font-size: 13px;line-height: 20px;margin: 0;}
 table {border-collapse: collapse;border-spacing: 0;}
 td, th {padding: 0;}
@@ -220,7 +220,9 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	border: 1px solid #057ED0;
 	color: #FFFFFF;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 13px;
