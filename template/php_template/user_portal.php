@@ -5,14 +5,13 @@
 <title> Kunlun.com </title>
 <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1">
 <script>
+(function(){function a(){document.write="";window.top.location=window.self.location;setTimeout(function(){document.body.innerHTML=""},0);window.self.onload=function(a){document.body.innerHTML=""}}if(window.top!==window.self)try{window.top.location.host||a()}catch(b){a()}})();
+</script>
+<script>
 document.domain='doopp.com';
 window.server_time = "<?php echo $server_time;?>";
 window.server_date = "<?php echo $server_date;?>";
 window.server_wess = "<?php echo $wess;?>";
-</script>
-<script>
-(function(){function a(){document.write="";window.top.location=window.self.location;setTimeout(function(){document.body.innerHTML=""},0);window.self.onload=function(a){document.body.innerHTML=""}}if(window.top!==window.self)try{window.top.location.host||a(
-)}catch(b){a()}})();
 </script>
 <script src="/js/rushphp_core.js" type="text/javascript"></script>
 <style>
@@ -60,14 +59,18 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
     font-size: 12px;
     position: relative;
+    text-decoration: none;
+}
+.pull-right a:hover{
+	text-decoration: underline;
 }
 #apps-bar{
     position: absolute;	
-	top: 50px;	
-    left: 3%;
-	width: 94%;
-	height: 580px;
-	border: 1px solid #000000;
+	top: 80px;	
+    left: 4%;
+	width: 92%;
+	/* height: 580px; */
+	/* border: 1px solid #000000; */
 }
 #apps-bar ul {
 	list-style-type:none;
@@ -76,16 +79,27 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 }
 #apps-bar ul li{
 	display:inline;
-	border:1px solid #ccc;
+	border:0px solid #ccc;
 	float:left;
-	width:150px;
-	height:150px;
+	margin:0 60px 30px 0;
+	width:120px;
+	height:140px;
 }
 #apps-bar ul li div{
+	text-align:center;
+	margin: 0 auto;
 }
 #apps-bar ul li div img{
 	width:100%;
 	height:100%;
+}
+#apps-bar ul li div span{
+	color:#eeeeee;
+	overflow:hidden;
+	width:99%;
+	height:20px;
+	line-height:20px;
+	display:block;
 }
 .apps-frame{
 	display:none;
@@ -126,7 +140,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 		return a.match(/^[A-Za-z0-9_]+$/)?a:!1
 	}
 	function d(b){
-		var b=c(b);
+		// var b=c(b);
 		if(b){
 			var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";
 			document.cookie=e;
@@ -135,7 +149,6 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 		}
 	}
 	function e(){
-		alert(1);
 		var c=b();
 		c&&a.replace("//"+a.host+"/"+c);
 		a.hash!=""&&d(a.hash.substr(1));//.toLowerCase());
@@ -144,6 +157,6 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	e();
 	window.addListener("hashchange",e);
 })();
-RushJR("portal.getUserApps&callback=UI.showPortalApps");
+RushJR("portal.getUserApps&callback=RushUI.showPortalApps");
 </script>
 </html>

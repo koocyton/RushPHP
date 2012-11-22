@@ -73,7 +73,7 @@ var RushCall = function(method)
 	}
 };
 
-var RushUI = new Class({
+var _RushUI = new Class({
 
 	Implements: Options,
 
@@ -84,30 +84,72 @@ var RushUI = new Class({
 	initialize: function(options) {
 		this.setOptions(options);
 	},
-	
+
 	flushPortalApps : function(apps)
 	{
-		var app_bar = $(this.options.element);
-		if (typeOf(app_bar)!="element") return false;
-		var app_bar_ul = app_bar.getFirst();
-		if (typeOf(app_bar_ul)!="element") {
-			app_bar_ul = new Element("ul").inject(app_bar, "top");
+		var appbar = $(this.options.element);
+		if (typeOf(appbar)!="element") return false;
+		var appbar_ul = appbar.getFirst();
+		if (typeOf(appbar_ul)!="element") {
+			appbar_ul = new Element("ul").inject(appbar, "top");
 		}
 		Array.from(apps).each(function(app){
-			var app_bar_a = new Element("a",{href:"/?act=portal#runApp"}).inject(app_bar_ul, "bottom");
-			var app_bar_li = new Element("li").inject(app_bar_a, "bottom");
-			var app_bar_div = new Element("div").inject(app_bar_li, "bottom");
-			var app_bar_img = new Element("img",{src:"/image/icon.png"}).inject(app_bar_div, "bottom");
+			var app_a     = new Element("a",{href:"/?act=portal#launch&appid="+app.id}).inject(appbar_ul, "bottom");
+			var app_li    = new Element("li").inject(app_a, "bottom");
+			var app_div   = new Element("div").inject(app_li, "bottom");
+			var app_img   = new Element("img",{src:"/image/icon.png"}).inject(app_div, "top");
+			var app_span  = new Element("span",{html:"Launch " + app.id}).inject(app_div, "bottom");
 		});
+		this.flushIconArray();
+	},
+	
+	flushIconArray : function()
+	{
+		var appbar = $(this.options.element);
+		if (typeOf(appbar)!="element") return false;
+		
+		var app_li_elts = appbar.getElements("li");
+
+		var app_width  = (app_li_elts[0].getSize().x).toInt();
+		var app_height = (app_li_elts[0].getSize().y).toInt();
+		var app_min_margin_right = app_width  / 2.6;
+		var app_margin_bottom    = app_height / 3;
+		
+		var appbar_width  = appbar.getSize().x;
+		var appbar_width2 = appbar_width - app_width;
+		
+		var app_margin_right = app_min_margin_right;
+		var ii = 10;
+		for (ii=10; ii>=1; ii--)
+		{
+			if ( appbar_width2 / ii >= app_width + app_min_margin_right )
+			{
+				app_margin_right = Math.floor(appbar_width2 / ii - app_width);
+				break;
+			}
+		}
+
+		for (nn=0; nn<app_li_elts.length; ++nn)
+		{
+			app_li_elts[nn].setStyle("margin-right", ((nn+1)%(ii+1)==0) ? 0 : app_margin_right);
+			app_li_elts[nn].setStyle("margin-bottom", app_margin_bottom);
+		}
 	}
 });
 
-var UI = {
-		
-	RushUI : new RushUI(),
+var RushUI = {
+
+	UI : new _RushUI(),
 
 	showPortalApps : function(apps){
-		UI.RushUI.setOptions({element:"apps-bar"});
-		UI.RushUI.flushPortalApps(apps);
+		RushUI.UI.setOptions({element:"apps-bar"});
+		RushUI.UI.flushPortalApps(apps);
+	},
+
+	flushPortalIcons : function(){
+		RushUI.UI.setOptions({element:"apps-bar"});
+		RushUI.UI.flushIconArray();
 	}
 };
+
+window.addEvent("resize", RushUI.flushPortalIcons);
