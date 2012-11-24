@@ -51,7 +51,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 }
 .pop-window
 {
-    width: 1000px;
+    width: 92%;
     height: auto;
     padding-bottom: 40px;
     margin: 60px auto 0;
@@ -65,7 +65,9 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 .pop_verticalslab, .pop_horizontalslab {
     background: none repeat scroll 0 0 #525252;
     height: 100%;
-    opacity: 0.7;
+	opacity:0.7;
+	-moz-opacity:0.7;
+	FILTER:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
     position: absolute;
     width: 100%;
 }
@@ -84,7 +86,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     width: 10px;
 }
 .pop_topleft {
-	background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yK/x/nDEHv4nTejR.png");
+	background-image: url("/image/fbicon.png");
     background-position: -377px -658px;
     background-repeat: no-repeat;
     background-size: auto auto;
@@ -92,7 +94,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     top: -10px;
 }
 .pop_topright {
-	  background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yK/x/nDEHv4nTejR.png");
+	  background-image: url("/image/fbicon.png");
     background-position: -388px -658px;
     background-repeat: no-repeat;
     background-size: auto auto;
@@ -100,7 +102,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     top: -10px;
 }
 .pop_bottomright {
-	   background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yK/x/nDEHv4nTejR.png");
+	   background-image: url("/image/fbicon.png");
     background-position: -366px -658px;
     background-repeat: no-repeat;
     background-size: auto auto;
@@ -108,7 +110,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     right: -10px;
 }
 .pop_bottomleft {
-	 background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yK/x/nDEHv4nTejR.png");
+	 background-image: url("/image/fbicon.png");
     background-position: -355px -658px;
     background-repeat: no-repeat;
     background-size: auto auto;
@@ -121,19 +123,12 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     position: relative;
 }
 .pop_content h2.dialog_title {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
     background: none repeat scroll 0 0 #6D84B4;
-    border-color: #3B5998 #3B5998 -moz-use-text-color;
-    border-image: none;
-    border-style: solid solid none;
-    border-width: 1px 1px medium;
     color: #FFFFFF;
     font-size: 15px;
     font-weight: bold;
     margin: 0;
+    height: 530px;
     padding: 0;
 }
 .global-nav {
