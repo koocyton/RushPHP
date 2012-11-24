@@ -171,6 +171,10 @@ var Rush = {
 
 	dispatch : function(request_uri, request_data){
 		_Rush.Dispatch(request_uri, request_data);
+	},
+
+	close : function(element){
+		$(element).setStyle("display", "none");
 	}
 };
 

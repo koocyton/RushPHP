@@ -10,6 +10,7 @@
 )}catch(b){a()}})();
 </script>
 <style>
+* { margin: 0; padding: 0; }
 html {}
 html, body, #doc, #page-outer { height: 100%; }
 body, label, input, textarea, select, button {font-family: "Helvetica Neue",Arial,sans-serif;}

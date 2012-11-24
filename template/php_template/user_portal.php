@@ -54,7 +54,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     width: 92%;
     height: auto;
     padding-bottom: 40px;
-    margin: 60px auto 0;
+    margin: 30px auto 0;
     overflow: visible;
 }
 .pop_container {
@@ -79,11 +79,18 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     margin: 0 0 0 -10px;
     padding-right: 20px;
 }
-.pop_topleft, .pop_topright, .pop_bottomleft, .pop_bottomright {
+.pop_topleft, .pop_topright, .pop_bottomleft, .pop_bottomright, .pop_topclose {
     height: 10px;
     overflow: hidden;
     position: absolute;
     width: 10px;
+}
+.pop_topclose {
+	height:29px;	
+	width:29px;
+	z-index:61;
+	top:-24px;
+	left:100%;
 }
 .pop_topleft {
 	background-image: url("/image/fbicon.png");
@@ -94,7 +101,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     top: -10px;
 }
 .pop_topright {
-	  background-image: url("/image/fbicon.png");
+	background-image: url("/image/fbicon.png");
     background-position: -388px -658px;
     background-repeat: no-repeat;
     background-size: auto auto;
@@ -102,34 +109,32 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     top: -10px;
 }
 .pop_bottomright {
-	   background-image: url("/image/fbicon.png");
-    background-position: -366px -658px;
-    background-repeat: no-repeat;
-    background-size: auto auto;
-    bottom: -10px;
-    right: -10px;
+	background-image: url("/image/fbicon.png");
+	background-position: -366px -658px;
+	background-repeat: no-repeat;
+	background-size: auto auto;
+	bottom: -10px;
+	right: -10px;
 }
 .pop_bottomleft {
-	 background-image: url("/image/fbicon.png");
-    background-position: -355px -658px;
-    background-repeat: no-repeat;
-    background-size: auto auto;
-    bottom: -10px;
-    left: -10px;
+	background-image: url("/image/fbicon.png");
+	background-position: -355px -658px;
+	background-repeat: no-repeat;
+	background-size: auto auto;
+	bottom: -10px;
+	left: -10px;
 }
 .pop_content {
-    direction: ltr;
+	direction: ltr;
     outline: medium none;
     position: relative;
 }
-.pop_content h2.dialog_title {
-    background: none repeat scroll 0 0 #6D84B4;
-    color: #FFFFFF;
-    font-size: 15px;
-    font-weight: bold;
-    margin: 0;
-    height: 530px;
+.pop_content iframe.dialog_frame {
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: 550px;
+    width: 100%;
     padding: 0;
+    margin: 0;
 }
 .global-nav {
 	position: relative;
@@ -199,15 +204,6 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	line-height:20px;
 	display:block;
 }
-.apps-frame{
-	display:none;
-    position: absolute;	
-	top: 50px;	
-    left: 5%;
-	width: 90%;
-	height: 580px;
-	border: 1px solid #ffffff;
-}
 </style>
 </head>
 <body>
@@ -224,24 +220,27 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 			</div>	
 		</div>
 
-		<div class="pop-dialog">
+		<div id="apps-bar"></div>
+
+		<div class="pop-dialog" id="pop-dialog">
 			<div class="pop-window">
 				<div class="pop_container">
 					<div class="pop_verticalslab"></div>
 					<div class="pop_horizontalslab"></div>
+					<div class="pop_topclose">
+						<a href="javascript:Rush.close('pop-dialog')"><img src="/image/pop-close.png" /></a>
+					</div>
 					<div class="pop_topleft"></div>
 					<div class="pop_topright"></div>
 					<div class="pop_bottomright"></div>
 					<div class="pop_bottomleft"></div>
 					<div class="pop_content">
-						<h2 class="dialog_title"> Launch Application</h2>
+						<iframe frameborder="0" src="http://www.baidu.com/" class="dialog_frame"></iframe>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<div id="apps-bar"></div>
-		<div class="apps-frame"></div>
+		
 	</div>
 	<div id="js-root"></div>
 </body>
