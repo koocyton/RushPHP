@@ -21,7 +21,7 @@ table {border-collapse: collapse;border-spacing: 0;}
 td, th {padding: 0;}
 button {border: 0 none;margin: 0;	}
 label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
-.topbar {box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);left: 0;position: fixed;right: 0;top: 0;z-index: 1000;}
+.top-bar {box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);left: 0;position: fixed;right: 0;top: 0;z-index: 1000;}
 .global-nav {
 	position: relative;
 	width: 100%;
@@ -112,6 +112,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     box-shadow:0 1px 0 rgba(0,0,0,.1);
 	padding:0;
     margin:0;
+    background-image:http://mad4milk.net/rays-white.png;
 	background:#fff;
     background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fff),color-stop(100%,#ddd));
     background:-webkit-linear-gradient(top,#fff 0,#ddd 100%);
@@ -303,7 +304,7 @@ input[type="checkbox"], input[type="radio"] {
 </head>
 <body>
 	<div id="doc">
-		<div class="topbar">
+		<div class="top-bar">
 			<div class="global-nav"></div>	
 		</div>
 		<div id="page-outer">

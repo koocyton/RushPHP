@@ -25,11 +25,11 @@ var __Rush = new Class({
 		
 		switch (dispatch_set)
 		{
-			case "window" : this.UIPopIframe   (request_url, request_data); break;
+			case "window" : this.UIPopWindow   (request_url); break;
 			case "iframe" : this.UIPopIframe   (request_url, request_data); break;
 			case "script" : this.RequestScript (request_url, request_data); break;
 			case "ajax"   : this.RequestJson   (request_url, request_data); break;
-			default       : this.UIPopIframe   (request_url, request_data); break;
+			default       : this.RequestScript (request_url, request_data); break;
 		}
 	},
 	
@@ -84,6 +84,11 @@ var __Rush = new Class({
 				}
 			}).send();
 		}
+	},
+	
+	UIPopWindow : function(window_url)
+	{
+		alert("UIPopWindow is a null function");
 	},
 	
 	UIPopIframe : function(iframe_url, iframe_set)

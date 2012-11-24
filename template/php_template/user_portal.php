@@ -28,13 +28,113 @@ td, th {padding: 0;}
 button {border: 0 none;margin: 0;	}
 label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 #js-root { display:none; height:0px; width:0px; margin:0; padding:0; }
-.topbar {
+.top-bar {
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
 	left: 0;
 	position: fixed;
 	right: 0;
 	top: 0;
-	z-index: 1000;
+	z-index: 100;
+}
+.pop-dialog {
+    overflow-x: auto;
+    overflow-y: scroll;
+    background-color: rgba(0, 0, 0, 0.7);
+    outline: medium none;
+    overflow: visible;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+}
+.pop-window
+{
+    width: 1000px;
+    height: auto;
+    padding-bottom: 40px;
+    margin: 60px auto 0;
+    overflow: visible;
+}
+.pop_container {
+    direction: ltr;
+    position: relative;
+    top: 10px;
+}
+.pop_verticalslab, .pop_horizontalslab {
+    background: none repeat scroll 0 0 #525252;
+    height: 100%;
+    opacity: 0.7;
+    position: absolute;
+    width: 100%;
+}
+.pop_verticalslab {
+    margin: -10px 0 0;
+    padding-bottom: 20px;
+}
+.pop_horizontalslab {
+    margin: 0 0 0 -10px;
+    padding-right: 20px;
+}
+.pop_topleft, .pop_topright, .pop_bottomleft, .pop_bottomright {
+    height: 10px;
+    overflow: hidden;
+    position: absolute;
+    width: 10px;
+}
+.pop_topleft {
+	background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yK/x/nDEHv4nTejR.png");
+    background-position: -377px -658px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    left: -10px;
+    top: -10px;
+}
+.pop_topright {
+	  background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yK/x/nDEHv4nTejR.png");
+    background-position: -388px -658px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    right: -10px;
+    top: -10px;
+}
+.pop_bottomright {
+	   background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yK/x/nDEHv4nTejR.png");
+    background-position: -366px -658px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    bottom: -10px;
+    right: -10px;
+}
+.pop_bottomleft {
+	 background-image: url("http://static.ak.fbcdn.net/rsrc.php/v2/yK/x/nDEHv4nTejR.png");
+    background-position: -355px -658px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    bottom: -10px;
+    left: -10px;
+}
+.pop_content {
+    direction: ltr;
+    outline: medium none;
+    position: relative;
+}
+.pop_content h2.dialog_title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #6D84B4;
+    border-color: #3B5998 #3B5998 -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
 }
 .global-nav {
 	position: relative;
@@ -113,27 +213,12 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	height: 580px;
 	border: 1px solid #ffffff;
 }
-
-#body-mask {
-  display: none;
-  position: absolute;
-  overflow: hidden;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  z-index: 1001;
-  background-color:#000000;
-  opacity:0.6;
-  -moz-opacity:0.6;
-  FILTER:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
-  text-align: center;
-}
 </style>
 </head>
 <body>
 	<div id="doc">
-		<div class="topbar">
+
+		<div class="top-bar">
 			<div class="global-nav">
 				<div class="pull-right">
 					<a class="logout" href="/?act=portal#appstore">应用士多店</a>
@@ -143,17 +228,27 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 				</div>
 			</div>	
 		</div>
+
+		<div class="pop-dialog">
+			<div class="pop-window">
+				<div class="pop_container">
+					<div class="pop_verticalslab"></div>
+					<div class="pop_horizontalslab"></div>
+					<div class="pop_topleft"></div>
+					<div class="pop_topright"></div>
+					<div class="pop_bottomright"></div>
+					<div class="pop_bottomleft"></div>
+					<div class="pop_content">
+						<h2 class="dialog_title"> Launch Application</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div id="apps-bar"></div>
 		<div class="apps-frame"></div>
 	</div>
 	<div id="js-root"></div>
-
-	<div id="body-mask"></div>
-	<div id="pop-window">
-		<div id="pop-close"><img src="/image/" /></div>
-		<frame id="pop-frame" src="" ></frame>
-	</div>
-	
 </body>
 <script>
 (function(){
