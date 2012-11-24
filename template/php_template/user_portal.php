@@ -67,8 +67,8 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 #apps-bar{
     position: absolute;	
 	top: 80px;	
-    left: 4%;
-	width: 92%;
+    left: 5%;
+	width: 90%;
 	/* height: 580px; */
 	/* border: 1px solid #000000; */
 }
@@ -113,6 +113,22 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	height: 580px;
 	border: 1px solid #ffffff;
 }
+
+#body-mask {
+  display: none;
+  position: absolute;
+  overflow: hidden;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  background-color:#000000;
+  opacity:0.6;
+  -moz-opacity:0.6;
+  FILTER:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+  text-align: center;
+}
 </style>
 </head>
 <body>
@@ -131,6 +147,13 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 		<div class="apps-frame"></div>
 	</div>
 	<div id="js-root"></div>
+
+	<div id="body-mask"></div>
+	<div id="pop-window">
+		<div id="pop-close"><img src="/image/" /></div>
+		<frame id="pop-frame" src="" ></frame>
+	</div>
+	
 </body>
 <script>
 (function(){
@@ -148,7 +171,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 			var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";
 			document.cookie=e;
 			a.replace("/?act=portal#"+b);
-			RushJR(b);
+			Rush.dispatch(b);
 		}
 	}
 	function e(){
@@ -160,6 +183,6 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	e();
 	window.addListener("hashchange",e);
 })();
-RushJR("portal.getUserApps&callback=RushUI.showPortalApps");
+Rush.dispatch("portal.getUserApps&callback=Rush.showPortalApps");
 </script>
 </html>

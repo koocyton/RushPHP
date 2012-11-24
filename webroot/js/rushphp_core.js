@@ -6,74 +6,8 @@ window.clog = function(){if (window.console && window.console.log && arguments.l
 
 /* rushphp_core */
 
-// Rush Javacript Request
-RushJR = function(request_uri, request_data)
-{
-	var url = "/?act=" + request_uri + "&wess=" + window.server_wess;
-	var elt = new Element("script", {
-		src : url, events : { load:function(){ this.destroy() } },
-	}).inject($("js-root"), "top");
-};
-
-// Rush Ajax Request
-RushAR = function(request_url, request_data)
-{
-	var request_form   = $(request_url);
-	var request_method = "get";
-
-	if(request_form!=null && typeOf(request_form)=="element" && request_form.tagName=="FORM")
-	{
-		request_data   = request_form.toQueryString();
-		request_url    = request_form.getAttribute("action");
-		request_method = (request_form.getAttribute("method")=="post") ? "post" : "get";
-	}
-	else
-	{
-		request_method = (typeOf(request_data)!=false) ? "post" : "get";
-	}
-
-	request_url = request_url + "&wess=" + window.server_wess;
-
-	if (request_method=="post")
-	{
-		new Request.JSON({
-			url: request_url,
-			method: 'post',
-			onComplete: function(person, json){
-				clog(person,json);
-			}
-		}).send(request_data);
-	}
-	else
-	{
-		new Request.JSON({
-			url: request_url,
-			method: 'get',
-			onComplete: function(person, json){
-				clog(person,json);
-			}
-		}).send();
-	}
-};
-
-// Rush Request Callback
-var RushCall = function(method)
-{
-	if (arguments.length>1)
-	{
-		eval(method + ".apply(window, Array.from(arguments).slice(1));");
-	}
-	else if (arguments.length==1)
-	{
-		eval(method + ".call(window);");
-	}
-	else
-	{
-		return false;
-	}
-};
-
-var _RushUI = new Class({
+// __Rush 类
+var __Rush = new Class({
 
 	Implements: Options,
 
@@ -85,7 +19,86 @@ var _RushUI = new Class({
 		this.setOptions(options);
 	},
 
-	flushPortalApps : function(apps)
+	Dispatch : function(request_url, request_data)
+	{
+		var dispatch_set = this.GetDispatchSet(request_url);
+		
+		switch (dispatch_set)
+		{
+			case "window" : this.UIPopIframe   (request_url, request_data); break;
+			case "iframe" : this.UIPopIframe   (request_url, request_data); break;
+			case "script" : this.RequestScript (request_url, request_data); break;
+			case "ajax"   : this.RequestJson   (request_url, request_data); break;
+			default       : this.UIPopIframe   (request_url, request_data); break;
+		}
+	},
+	
+	GetDispatchSet : function(request_url)
+	{
+		clog(request_url);
+	},
+
+	RequestScript : function(request_uri, request_data)
+	{
+		var url = "/?act=" + request_uri + "&wess=" + window.server_wess;
+		var elt = new Element("script", {
+			src : url, events : { load:function(){ this.destroy() } },
+		}).inject($("js-root"), "top");
+	},
+
+	RequestJson : function(request_url, request_data)
+	{
+		var request_form   = $(request_url);
+		var request_method = "get";
+
+		if(request_form!=null && typeOf(request_form)=="element" && request_form.tagName=="FORM")
+		{
+			request_data   = request_form.toQueryString();
+			request_url    = request_form.getAttribute("action");
+			request_method = (request_form.getAttribute("method")=="post") ? "post" : "get";
+		}
+		else
+		{
+			request_method = (typeOf(request_data)!=false) ? "post" : "get";
+		}
+
+		request_url = request_url + "&wess=" + window.server_wess;
+
+		if (request_method=="post")
+		{
+			new Request.JSON({
+				url: request_url,
+				method: 'post',
+				onComplete: function(person, json){
+					clog(person,json);
+				}
+			}).send(request_data);
+		}
+		else
+		{
+			new Request.JSON({
+				url: request_url,
+				method: 'get',
+				onComplete: function(person, json){
+					clog(person,json);
+				}
+			}).send();
+		}
+	},
+	
+	UIPopIframe : function(iframe_url, iframe_set)
+	{
+		this.UISwitchMask(true);
+		$("pop-window").setStyles({display:"block"});
+	},
+	
+	UISwitchMask: function(display)
+	{
+		var height = window.getScrollHeight() + 'px'; 
+		$("body-mask").setStyles({top: '0px', height: height, display: display ? "block" : "none"});
+	},
+
+	UIFlushPortalApps : function(apps)
 	{
 		var appbar = $(this.options.element);
 		if (typeOf(appbar)!="element") return false;
@@ -100,10 +113,10 @@ var _RushUI = new Class({
 			var app_img   = new Element("img",{src:"/image/icon.png"}).inject(app_div, "top");
 			var app_span  = new Element("span",{html:"Launch " + app.id}).inject(app_div, "bottom");
 		});
-		this.flushIconArray();
+		this.UIFlushIconArray();
 	},
-	
-	flushIconArray : function()
+
+	UIFlushIconArray : function()
 	{
 		var appbar = $(this.options.element);
 		if (typeOf(appbar)!="element") return false;
@@ -137,19 +150,40 @@ var _RushUI = new Class({
 	}
 });
 
-var RushUI = {
+var _Rush = new __Rush();
 
-	UI : new _RushUI(),
+var Rush = {
 
 	showPortalApps : function(apps){
-		RushUI.UI.setOptions({element:"apps-bar"});
-		RushUI.UI.flushPortalApps(apps);
+		_Rush.setOptions({element:"apps-bar"});
+		_Rush.UIFlushPortalApps(apps);
 	},
 
 	flushPortalIcons : function(){
-		RushUI.UI.setOptions({element:"apps-bar"});
-		RushUI.UI.flushIconArray();
+		_Rush.setOptions({element:"apps-bar"});
+		_Rush.UIFlushIconArray();
+	},
+
+	dispatch : function(request_uri, request_data){
+		_Rush.Dispatch(request_uri, request_data);
 	}
 };
 
-window.addEvent("resize", RushUI.flushPortalIcons);
+//Rush Request Callback
+var RushCall = function(method)
+{
+	if (arguments.length>1)
+	{
+		eval(method + ".apply(window, Array.from(arguments).slice(1));");
+	}
+	else if (arguments.length==1)
+	{
+		eval(method + ".call(window);");
+	}
+	else
+	{
+		return false;
+	}
+}; 
+
+window.addEvent("resize", Rush.flushPortalIcons);
