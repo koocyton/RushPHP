@@ -153,12 +153,14 @@ var __Rush = new Class({
 	UIOpenApplication : function(app_id)
 	{
 		var doc_elt = $(this.options.element);
+		if (typeOf(doc_elt)!="element") return false;
+
 		var pop_dialog_id = "pop-dialog-app-" + app_id;
 		var pop_dialog = $(pop_dialog_id);
 
 		if (pop_dialog && typeOf(pop_dialog)=="element")
 		{
-			Rush.openDialog(pop_dialog);
+			this.UIShow(pop_dialog);
 			return;
 		}
 
@@ -168,7 +170,7 @@ var __Rush = new Class({
 
 		new Element("div",{"class":"pop-verticalslab"}).inject(pop_container, "bottom");
 		new Element("div",{"class":"pop-horizontalslab"}).inject(pop_container, "bottom");
-		new Element("div",{"class":"pop-topclose", events:{click:function(){Rush.closeDialog(pop_dialog_id)}}}).inject(pop_container, "bottom");
+		new Element("div",{"class":"pop-topclose", events:{click:function(){_Rush.UIHidden(pop_dialog_id)}}}).inject(pop_container, "bottom");
 		new Element("div",{"class":"pop-topleft"}).inject(pop_container, "bottom");
 		new Element("div",{"class":"pop-topright"}).inject(pop_container, "bottom");
 		new Element("div",{"class":"pop-bottomright"}).inject(pop_container, "bottom");
@@ -178,6 +180,14 @@ var __Rush = new Class({
 		
 		var dialog_frame_src = "http://www.baidu.com/?wess=" + window.server_wess; 
 		var dialog_frame = new Element("iframe",{"frameborder":"0", src:dialog_frame_src, "class":"dialog-frame"}).inject(pop_content, "bottom");
+	},
+	
+	UIShow : function(element){
+		$(element).setStyle("display", "block");
+	},
+
+	UIHidden : function(element){
+		$(element).setStyle("display", "none");
 	}
 });
 
@@ -198,19 +208,13 @@ var Rush = {
 	dispatch : function(request_uri, request_data){
 		_Rush.Dispatch(request_uri, request_data);
 	},
-
-	launchApplication : function(app_id)
-	{
-		_Rush.setOptions({element:"doc"});
-		_Rush.UIOpenApplication(app_id);
-	},
-
-	openDialog : function(element){
-		$(element).setStyle("display", "block");
-	},
-
-	closeDialog : function(element){
-		$(element).setStyle("display", "none");
+	
+	onHashChange : function(){
+		var l = window.location;
+		if ( l.hash!="" ){
+			l.replace( "/?act=portal#" + l.hash.substr(1) )
+			Rush.dispatch( l.hash.substr(1) );
+		}
 	}
 };
 
@@ -231,4 +235,25 @@ var RushCall = function(method)
 	}
 }; 
 
-window.addEvent("resize", Rush.flushPortalIcons);
+window.addEvent('domready', function() {
+
+	Rush.dispatch("portal.getUserApps&callback=Rush.showPortalApps");
+
+	window.addEvent("resize", Rush.flushPortalIcons);
+	
+	window.addListener("hashchange", Rush.onHashChange);
+});
+
+/*****************************************\
+ * (function(){
+ *	function b(){ var b=a.href.match(/#(.)(.*)$/); return b&&b[1]=="!"&&b[2].replace(/^\//,"")
+ *	}
+ *	function c(a){ if(!a)return!1;a=a.replace(/^#|\/$/,"").toLowerCase(); return a.match(/^[a-z0-9_]+$/)?a:!1
+ *	}
+ *	function d(b){ var b=c(b); if(b){ var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/"; document.cookie=e; a.replace("/?act=portal#"+b); Rush.dispatch(b);}
+ *	}
+ *	function e(){ var c=b(); clog(c); c&&a.replace("//"+a.host+"/"+c); a.hash!=""&&d(a.hash.substr(1)).toLowerCase());
+ *	}
+ *	var a=window.location; e(); window.addListener("hashchange",e);
+ * })();
+\****************************************/

@@ -232,34 +232,4 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	</div>
 	<div id="js-root"></div>
 </body>
-<script>
-(function(){
-	function b(){
-		var b=a.href.match(/#(.)(.*)$/);
-		return b&&b[1]=="!"&&b[2].replace(/^\//,"")
-	}
-	function c(a){
-		if(!a)return!1;a=a.replace(/^#|\/$/,"");//.toLowerCase();
-		return a.match(/^[A-Za-z0-9_]+$/)?a:!1
-	}
-	function d(b){
-		// var b=c(b);
-		if(b){
-			var d=document.referrer||"none",e="ev_redir_"+b+"="+d+"; path=/";
-			document.cookie=e;
-			a.replace("/?act=portal#"+b);
-			Rush.dispatch(b);
-		}
-	}
-	function e(){
-		var c=b();
-		c&&a.replace("//"+a.host+"/"+c);
-		a.hash!=""&&d(a.hash.substr(1));//.toLowerCase());
-	}
-	var a=window.location;
-	e();
-	window.addListener("hashchange",e);
-})();
-Rush.dispatch("portal.getUserApps&callback=Rush.showPortalApps");
-</script>
 </html>
