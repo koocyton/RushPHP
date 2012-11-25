@@ -57,12 +57,12 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     margin: 30px auto 0;
     overflow: visible;
 }
-.pop_container {
+.pop-container {
     direction: ltr;
     position: relative;
     top: 10px;
 }
-.pop_verticalslab, .pop_horizontalslab {
+.pop-verticalslab, .pop-horizontalslab {
     background: none repeat scroll 0 0 #525252;
     height: 100%;
 	opacity:0.7;
@@ -71,65 +71,55 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
     position: absolute;
     width: 100%;
 }
-.pop_verticalslab {
+.pop-verticalslab {
     margin: -10px 0 0;
     padding-bottom: 20px;
 }
-.pop_horizontalslab {
+.pop-horizontalslab {
     margin: 0 0 0 -10px;
     padding-right: 20px;
 }
-.pop_topleft, .pop_topright, .pop_bottomleft, .pop_bottomright, .pop_topclose {
+.pop-topleft, .pop-topright, .pop-bottomleft, .pop-bottomright, .pop-topclose {
     height: 10px;
     overflow: hidden;
     position: absolute;
     width: 10px;
 }
-.pop_topclose {
+.pop-topclose {
+	background: url("/image/pop-close.png") no-repeat;
 	height:29px;	
 	width:29px;
-	z-index:61;
 	top:-24px;
 	left:100%;
+	z-index:61;
+	cursor: pointer;
 }
-.pop_topleft {
-	background-image: url("/image/fbicon.png");
-    background-position: -377px -658px;
-    background-repeat: no-repeat;
-    background-size: auto auto;
+.pop-topleft {
+	background: url("/image/fbicon.png") no-repeat -377px -658px;
     left: -10px;
     top: -10px;
 }
-.pop_topright {
-	background-image: url("/image/fbicon.png");
-    background-position: -388px -658px;
-    background-repeat: no-repeat;
-    background-size: auto auto;
+.pop-topright {
+	background: url("/image/fbicon.png") no-repeat -388px -658px;
     right: -10px;
     top: -10px;
 }
-.pop_bottomright {
-	background-image: url("/image/fbicon.png");
-	background-position: -366px -658px;
-	background-repeat: no-repeat;
-	background-size: auto auto;
+.pop-bottomright {
+	background: url("/image/fbicon.png") no-repeat -366px -658px;
 	bottom: -10px;
 	right: -10px;
 }
-.pop_bottomleft {
-	background-image: url("/image/fbicon.png");
-	background-position: -355px -658px;
-	background-repeat: no-repeat;
-	background-size: auto auto;
+.pop-bottomleft {
+	background: url("/image/fbicon.png") no-repeat -355px -658px;
 	bottom: -10px;
 	left: -10px;
 }
-.pop_content {
+.pop-content {
 	direction: ltr;
     outline: medium none;
     position: relative;
 }
-.pop_content iframe.dialog_frame {
+.pop-content iframe.dialog-frame {
     background: none repeat scroll 0 0 #FFFFFF;
     height: 550px;
     width: 100%;
@@ -222,14 +212,12 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 
 		<div id="apps-bar"></div>
 
-		<div class="pop-dialog" id="pop-dialog">
+		<!-- <div class="pop-dialog" id="pop-dialog">
 			<div class="pop-window">
 				<div class="pop_container">
 					<div class="pop_verticalslab"></div>
 					<div class="pop_horizontalslab"></div>
-					<div class="pop_topclose">
-						<a href="javascript:Rush.close('pop-dialog')"><img src="/image/pop-close.png" /></a>
-					</div>
+					<div class="pop_topclose"></div>
 					<div class="pop_topleft"></div>
 					<div class="pop_topright"></div>
 					<div class="pop_bottomright"></div>
@@ -239,7 +227,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> //-->
 		
 	</div>
 	<div id="js-root"></div>

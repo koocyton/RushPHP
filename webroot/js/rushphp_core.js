@@ -14,6 +14,8 @@ var __Rush = new Class({
 	options: {
 		element : null
 	},
+	
+	applications : null,
 
 	initialize: function(options) {
 		this.setOptions(options);
@@ -35,7 +37,7 @@ var __Rush = new Class({
 	
 	GetDispatchSet : function(request_url)
 	{
-		clog(request_url);
+		if (request_url.test(/^launch/)==true) return "iframe";
 	},
 
 	RequestScript : function(request_uri, request_data)
@@ -93,14 +95,7 @@ var __Rush = new Class({
 	
 	UIPopIframe : function(iframe_url, iframe_set)
 	{
-		this.UISwitchMask(true);
-		$("pop-window").setStyles({display:"block"});
-	},
-	
-	UISwitchMask: function(display)
-	{
-		var height = window.getScrollHeight() + 'px'; 
-		$("body-mask").setStyles({top: '0px', height: height, display: display ? "block" : "none"});
+		this.UIOpenApplication();
 	},
 
 	UIFlushPortalApps : function(apps)
@@ -119,6 +114,7 @@ var __Rush = new Class({
 			var app_span  = new Element("span",{html:"Launch " + app.id}).inject(app_div, "bottom");
 		});
 		this.UIFlushIconArray();
+		this.applications = apps;
 	},
 
 	UIFlushIconArray : function()
@@ -152,6 +148,36 @@ var __Rush = new Class({
 			app_li_elts[nn].setStyle("margin-right", ((nn+1)%(ii+1)==0) ? 0 : app_margin_right);
 			app_li_elts[nn].setStyle("margin-bottom", app_margin_bottom);
 		}
+	},
+	
+	UIOpenApplication : function(app_id)
+	{
+		var doc_elt = $(this.options.element);
+		var pop_dialog_id = "pop-dialog-app-" + app_id;
+		var pop_dialog = $(pop_dialog_id);
+
+		if (pop_dialog && typeOf(pop_dialog)=="element")
+		{
+			Rush.openDialog(pop_dialog);
+			return;
+		}
+
+		var pop_dialog = new Element("div",{"class":"pop-dialog",id:pop_dialog_id}).inject(doc_elt, "bottom");
+		var pop_window = new Element("div",{"class":"pop-window"}).inject(pop_dialog, "bottom");
+		var pop_container = new Element("div",{"class":"pop-container"}).inject(pop_window, "bottom");
+
+		new Element("div",{"class":"pop-verticalslab"}).inject(pop_container, "bottom");
+		new Element("div",{"class":"pop-horizontalslab"}).inject(pop_container, "bottom");
+		new Element("div",{"class":"pop-topclose", events:{click:function(){Rush.closeDialog(pop_dialog_id)}}}).inject(pop_container, "bottom");
+		new Element("div",{"class":"pop-topleft"}).inject(pop_container, "bottom");
+		new Element("div",{"class":"pop-topright"}).inject(pop_container, "bottom");
+		new Element("div",{"class":"pop-bottomright"}).inject(pop_container, "bottom");
+		new Element("div",{"class":"pop-bottomleft"}).inject(pop_container, "bottom");
+
+		var pop_content = new Element("div",{"class":"pop-content"}).inject(pop_container, "bottom");
+		
+		var dialog_frame_src = "http://www.baidu.com/?wess=" + window.server_wess; 
+		var dialog_frame = new Element("iframe",{"frameborder":"0", src:dialog_frame_src, "class":"dialog-frame"}).inject(pop_content, "bottom");
 	}
 });
 
@@ -173,7 +199,17 @@ var Rush = {
 		_Rush.Dispatch(request_uri, request_data);
 	},
 
-	close : function(element){
+	launchApplication : function(app_id)
+	{
+		_Rush.setOptions({element:"doc"});
+		_Rush.UIOpenApplication(app_id);
+	},
+
+	openDialog : function(element){
+		$(element).setStyle("display", "block");
+	},
+
+	closeDialog : function(element){
 		$(element).setStyle("display", "none");
 	}
 };
