@@ -53,14 +53,15 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 {
     width: 92%;
     height: auto;
-    padding-bottom: 40px;
-    margin: 30px auto 0;
+    margin: 40px auto 0;
     overflow: visible;
+    position: relative;
 }
 .pop-container {
     direction: ltr;
     position: relative;
-    top: 10px;
+    float: right;
+    width: 100%;
 }
 .pop-verticalslab, .pop-horizontalslab {
     background: none repeat scroll 0 0 #525252;
@@ -115,6 +116,7 @@ label {color: #333333;cursor: pointer;display: block;margin-bottom: 5px;}
 	left: -10px;
 }
 .pop-content {
+    background: none repeat scroll 0 0 #FFFFFF;	
 	direction: ltr;
     outline: medium none;
     position: relative;

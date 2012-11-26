@@ -25,10 +25,10 @@ var __Rush = new Class({
 	{
 		var dispatch_set = this.GetDispatchSet(request_url);
 		
-		switch (dispatch_set)
+		switch (dispatch_set[0])
 		{
-			case "window" : this.UIPopWindow   (request_url); break;
-			case "iframe" : this.UIPopIframe   (request_url, request_data); break;
+			case "window" : this.UIPopWindow   (request_url, dispatch_set[1]); break;
+			case "iframe" : this.UIPopIframe   (request_url, dispatch_set[1]); break;
 			case "script" : this.RequestScript (request_url, request_data); break;
 			case "ajax"   : this.RequestJson   (request_url, request_data); break;
 			default       : this.RequestScript (request_url, request_data); break;
@@ -37,7 +37,20 @@ var __Rush = new Class({
 	
 	GetDispatchSet : function(request_url)
 	{
-		if (request_url.test(/^launch/)==true) return "iframe";
+		clog(request_url);
+		if (request_url.test(/^launch/)==true)
+		{
+			rest = request_url.match(/appid=(\d+)/);
+			if (rest!=null)
+			{
+				return ["iframe", rest[1]];
+			}
+		}
+		if (request_url.test(/^portal\./)==true)
+		{
+			return ["script", ""];
+		}
+		return false;
 	},
 
 	RequestScript : function(request_uri, request_data)
@@ -92,11 +105,6 @@ var __Rush = new Class({
 	{
 		alert("UIPopWindow is a null function");
 	},
-	
-	UIPopIframe : function(iframe_url, iframe_set)
-	{
-		this.UIOpenApplication();
-	},
 
 	UIFlushPortalApps : function(apps)
 	{
@@ -108,6 +116,7 @@ var __Rush = new Class({
 		}
 		Array.from(apps).each(function(app){
 			var app_a     = new Element("a",{href:"/?act=portal#launch&appid="+app.id}).inject(appbar_ul, "bottom");
+			app_a.addEvent("click", function(){Rush.dispatch("launch&appid="+app.id)});
 			var app_li    = new Element("li").inject(app_a, "bottom");
 			var app_div   = new Element("div").inject(app_li, "bottom");
 			var app_img   = new Element("img",{src:"/image/icon.png"}).inject(app_div, "top");
@@ -150,36 +159,49 @@ var __Rush = new Class({
 		}
 	},
 	
-	UIOpenApplication : function(app_id)
+	UIPopIframe : function(app_url, app_id, width, height, float)
 	{
 		var doc_elt = $(this.options.element);
 		if (typeOf(doc_elt)!="element") return false;
 
-		var pop_dialog_id = "pop-dialog-app-" + app_id;
+		var pop_dialog_id = "pop-dialog-" + app_id;
 		var pop_dialog = $(pop_dialog_id);
 
-		if (pop_dialog && typeOf(pop_dialog)=="element")
-		{
-			this.UIShow(pop_dialog);
-			return;
-		}
+		if (pop_dialog && typeOf(pop_dialog)=="element") { this.UIShow(pop_dialog); return; }
 
 		var pop_dialog = new Element("div",{"class":"pop-dialog",id:pop_dialog_id}).inject(doc_elt, "bottom");
 		var pop_window = new Element("div",{"class":"pop-window"}).inject(pop_dialog, "bottom");
-		var pop_container = new Element("div",{"class":"pop-container"}).inject(pop_window, "bottom");
+		
+		var pop_container = new Element("div",{
+			"class" : "pop-container",
+			styles  : {
+				width : width ? width : "100%",
+				float : float ? float : "left"
+			}
+		}).inject(pop_window, "bottom");
 
 		new Element("div",{"class":"pop-verticalslab"}).inject(pop_container, "bottom");
 		new Element("div",{"class":"pop-horizontalslab"}).inject(pop_container, "bottom");
-		new Element("div",{"class":"pop-topclose", events:{click:function(){_Rush.UIHidden(pop_dialog_id)}}}).inject(pop_container, "bottom");
 		new Element("div",{"class":"pop-topleft"}).inject(pop_container, "bottom");
 		new Element("div",{"class":"pop-topright"}).inject(pop_container, "bottom");
 		new Element("div",{"class":"pop-bottomright"}).inject(pop_container, "bottom");
 		new Element("div",{"class":"pop-bottomleft"}).inject(pop_container, "bottom");
 
+		new Element("div",{
+			"class":"pop-topclose",
+			events:{
+				click:function(){
+					_Rush.UIHidden(pop_dialog_id)
+				}
+			}
+		}).inject(pop_container, "bottom");
+
 		var pop_content = new Element("div",{"class":"pop-content"}).inject(pop_container, "bottom");
-		
-		var dialog_frame_src = "http://www.baidu.com/?wess=" + window.server_wess; 
-		var dialog_frame = new Element("iframe",{"frameborder":"0", src:dialog_frame_src, "class":"dialog-frame"}).inject(pop_content, "bottom");
+		var dialog_frame = new Element("iframe",{ 
+			"src"          : app_url, 
+			"class"        : "dialog-frame",
+			"frameborder"  : "0"
+		}).inject(pop_content, "bottom");
 	},
 	
 	UIShow : function(element){
@@ -206,9 +228,10 @@ var Rush = {
 	},
 
 	dispatch : function(request_uri, request_data){
+		_Rush.setOptions({element:"doc"});
 		_Rush.Dispatch(request_uri, request_data);
 	},
-	
+
 	onHashChange : function(){
 		var l = window.location;
 		if ( l.hash!="" ){
@@ -240,8 +263,10 @@ window.addEvent('domready', function() {
 	Rush.dispatch("portal.getUserApps&callback=Rush.showPortalApps");
 
 	window.addEvent("resize", Rush.flushPortalIcons);
-	
+
 	window.addListener("hashchange", Rush.onHashChange);
+
+	Rush.onHashChange();
 });
 
 /*****************************************\
