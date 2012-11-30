@@ -37,6 +37,7 @@ var __Rush = new Class({
 	
 	GetDispatchSet : function(request_url)
 	{
+		
 		clog(request_url);
 		if (request_url.test(/^launch/)==true)
 		{
